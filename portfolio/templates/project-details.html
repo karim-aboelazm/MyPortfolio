@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block title %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' %}
+{{portfolio.project_name}} {% trans "Details" %}
+{% else %}
+{% trans "Details" %} {{portfolio.project_name_ar}}
+{% endif %}
+{% endblock %}
+{% block content %}
+<div class="hero hero-single route bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
+    <div class="overlay-mf"></div>
+    <div class="hero-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          {% get_current_language as LANGUAGE_CODE %}
+          {% if LANGUAGE_CODE == 'en' %}
+          <h2 class="hero-title mb-4">{{portfolio.project_name}} {% trans "Details" %}</h2>
+          {% else %}
+          <h2 class="hero-title mb-4">{% trans "Details" %} {{portfolio.project_name_ar}} </h2>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+                {% for pim in portfolio.projectimages_set.all %}
+                <div class="swiper-slide">
+                  <img src="{{pim.image.url}}" style="" alt="">
+                </div>
+                {% endfor %}
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              {% get_current_language as LANGUAGE_CODE %}
+              {% if LANGUAGE_CODE == 'en' %}
+              <h3>{{portfolio.project_name}} {% trans "info" %}</h3>
+              {% else %}
+              <h3> {% trans "info" %} عن {{portfolio.project_name_ar}} </h3>
+              {% endif %}
+              <ul>
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == 'en' %}
+                <li><strong>{% trans "Category" %}</strong>: {{portfolio.category}}</li>
+                <li><strong>{% trans "Client" %}</strong>: {{portfolio.client}}</li>
+                {% else %}
+                <li><strong>{% trans "Category" %}</strong>: {{portfolio.category_ar}}</li>
+                <li><strong>{% trans "Client" %}</strong>: {{portfolio.client_ar}}</li>
+                {% endif %}
+                <li><strong>{% trans "Project date" %}</strong>: {{portfolio.project_date|timesince}} ago</li>
+                <li><strong>{% trans "Project URL" %}</strong>: <a href="{{portfolio.project_url}}" target="_blank">{{portfolio.project_url}}</a></li>
+              </ul>
+            </div>
+            <div class="portfolio-info my-5">
+              {% get_current_language as LANGUAGE_CODE %}
+              {% if LANGUAGE_CODE == 'en' %}
+              <h3>{{portfolio.project_name}} {% trans "description" %}</h3>
+              <p style="text-align:justify;">{{portfolio.project_desc}}</p>
+              {% else %}
+              <h3>{% trans "description" %} لل{{portfolio.project_name_ar}} </h3>
+              <p style="text-align:justify;">{{portfolio.project_desc_ar}}</p>
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+
+  </main><!-- End #main -->
+
+{% endblock %}

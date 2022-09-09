@@ -1,0 +1,77 @@
+{% load static i18n %}
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="/"><img src="{% static 'img/logo.png' %}" class="mx-3" alt="" srcset=""> {% trans "Aboelazm" %}</a></h1>
+      <nav id="navbar" class="navbar">
+        <ul>
+          {% url 'porto:home' as the_url %}
+          {% if request.get_full_path == the_url %}
+          <li><a class="nav-link scrollto active" href="#hero">{% trans "Home"%}</a></li>
+          <li><a class="nav-link scrollto" href="#about">{% trans "About"%}</a></li>
+          <li><a class="nav-link scrollto" href="#services">{% trans "Services"%}</a></li>
+          <li><a class="nav-link scrollto " href="#work">{% trans "Work"%}</a></li>
+          <li><a class="nav-link scrollto " href="#blog">{% trans "Blog"%}</a></li>
+          <li><a class="nav-link scrollto" href="#contact">{% trans "Contact"%}</a></li>
+          <li class="dropdown"><a href="#"><span>{% trans "Languages"%}</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class=""><form  action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for available_languages as languages %}
+                <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+                <input name="language" type="hidden" value="ar" />
+                <button type="submit" class="ml-5" style="background: none;outline: none;border: none;font-size:20px" class=""><img src="{% static 'img/eg.png' %}" style="width:40px;height:40px;outline: none;margin-right:20px ;"  alt="" srcset=""> {% trans "Arabic" %}</button>
+              </form></li>
+              <hr>
+              <li class=""><form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for available_languages as languages %}
+                <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+                <input name="language" type="hidden" value="en" />
+                <button type="submit" class="ml-5" style="background: none;outline: none;border: none;font-size:20px" class=""><img src="{% static 'img/us.png' %}" style="width:30px;height:30px;outline: none;margin-right:20px; margin-left: 5px;"  alt="" srcset=""> {% trans "English" %}</button>
+              </form></li>
+            </ul>
+          </li>
+          {% else %}
+          <li><a class="nav-link scrollto active" href="/#hero">{% trans "Home"%}</a></li>
+          <li><a class="nav-link scrollto" href="/#about">{% trans "About"%}</a></li>
+          <li><a class="nav-link scrollto" href="/#services">{% trans "Services"%}</a></li>
+          <li><a class="nav-link scrollto " href="/#work">{% trans "Work"%}</a></li>
+          <li><a class="nav-link scrollto " href="/#blog">{% trans "Blog"%}</a></li>
+          <li><a class="nav-link scrollto" href="/#contact">{% trans "Contact"%}</a></li>
+          <li class="dropdown"><a href="#"><span>{% trans "Languages" %}</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class=""><form  action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for available_languages as languages %}
+                <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+                <input name="language" type="hidden" value="ar" />
+                <button type="submit" class="ml-5" style="background: none;outline: none;border: none;font-size:20px" class=""><img src="{% static 'img/eg.png' %}" style="width:40px;height:40px;outline: none;margin-right:20px ;"  alt="" srcset=""> {% trans "Arabic" %}</button>
+              </form></li>
+              <hr>
+              <li class=""><form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for available_languages as languages %}
+                <input name="next" type="hidden" value="{{ request.get_full_path}}" />
+                <input name="language" type="hidden" value="en" />
+                <button type="submit" class="ml-5" style="background: none;outline: none;border: none;font-size:20px" class=""><img src="{% static 'img/us.png' %}" style="width:30px;height:30px;outline: none;margin-right:20px; margin-left: 5px;"  alt="" srcset=""> {% trans "English" %}</button>
+              </form></li>
+            </ul>
+          </li>
+          {% endif %}
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+</header><!-- End Header -->

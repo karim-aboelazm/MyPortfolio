@@ -1,0 +1,18 @@
+  {% load static i18n %}
+  <!-- ======= Footer ======= -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="copyright-box">
+            {% get_current_language as LANGUAGE_CODE %}
+              {% if LANGUAGE_CODE == 'en' %}
+            <p class="copyright">&copy; Copyright <strong>{{about.name}}</strong>. All Rights Reserved</p>
+            {% else %}
+            <p class="copyright">حقوق النشر للمهندس كريم ابو العزم . كل الحقوق محفوظة</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->

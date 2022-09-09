@@ -1,0 +1,20 @@
+{% load static i18n %}
+<!-- ======= Hero Section ======= -->
+<div id="hero" class="hero route bg-image" style="background-image: url({% static '' %}img/hero-bg.jpg)">
+    <div class="overlay-itro"></div>
+    <div class="hero-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          {% get_current_language as LANGUAGE_CODE %}
+          {% if LANGUAGE_CODE == 'en' %}
+          <h1 class="hero-title mb-4">I am {{about.name}}</h1>
+          <p class="hero-subtitle"><span class="typed" data-typed-items="{% for job in jobs %}{{job.title}},{% endfor %}"></span></p>
+          {% else %}
+          <h1 class="hero-title mb-4">انا {{about.name_ar}}</h1>
+          <p class="hero-subtitle"><span class="typed" data-typed-items="{% for job in jobs %}{{job.title_ar}},{% endfor %}"></span></p>
+          {% endif %}
+          
+        </div>
+      </div>
+    </div>
+  </div><!-- End Hero Section -->
