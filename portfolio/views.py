@@ -38,8 +38,8 @@ class HomePageView(FormView):
         send_mail(
             Subject,
             msg,
-            settings.EMAIL_HOST_USER,
-            [Email],
+            Email,
+            [settings.EMAIL_HOST_USER],
             fail_silently=False,
         )
         return super().form_valid(form)
