@@ -1,7 +1,10 @@
 import os
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
+from dotenv import load_dotenv
+import psycopg2.extensions
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(dotenv_path=BASE_DIR / '.env')
 SECRET_KEY = "django-insecure-wv-k5v5l658k&pm=$x%3s6umkmxf5q8)+y-l%+cd-_fg$r(^tl"
 DEBUG = True
 ALLOWED_HOSTS = ['karim-aboelazm.herokuapp.com','127.0.0.1']
@@ -56,6 +59,14 @@ DATABASES = {
     }
 }
 
+import dj_database_url
+DATABASES_URL = os.getenv('DATABASES_URL')
+
+DATABASES  = {
+    'default': dj_database_url.config(default=DATABASES_URL,conn_max_age=1800),
+}
+
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -86,8 +97,8 @@ MEDIA_DIRS = (os.path.join(BASE_DIR, "media"),)
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "karimaboelazm28@gmail.com"
-EMAIL_HOST_PASSWORD = "wxwyiuvyvhbjxivy"
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)

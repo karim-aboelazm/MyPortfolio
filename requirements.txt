@@ -1,8 +1,17 @@
 asgiref==3.5.2
+certifi==2022.6.15.1
+distlib==0.3.6
+dj-database-url==1.0.0
 Django==4.1.1
 django-bootstrap5==22.1
 django-jazzmin==2.5.0
+filelock==3.8.0
 gunicorn==20.1.0
 Pillow==9.2.0
+pipenv==2022.9.8
+platformdirs==2.5.2
+python-dotenv==0.21.0
 sqlparse==0.4.2
 tzdata==2022.2
+virtualenv==20.16.5
+virtualenv-clone==0.5.7
