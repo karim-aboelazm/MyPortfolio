@@ -5,11 +5,11 @@
 {% include "snippets/info.html" %}
   <main id="main">
     <!-- ======= About Section ======= -->
-    <section id="about" class="about-mf sect-pt4 route">
-      <div class="container">
-        <div class="row">
+    <section id="about" class="about-mf sect-pt4 route" >
+      <div class="container" >
+        <div class="row" >
           <div class="col-sm-12">
-            <div class="box-shadow-full">
+            <div class="box-shadow-full" style="border-radius:12px;">
               <div class="row">
                 <div class="col-md-6">
                   <div class="row">
@@ -35,7 +35,7 @@
                     </div>
                   </div>
                   <div class="skill-mf">
-                    <p class="title-s">{% trans "Skill" %}</p>
+                    <p class="title-s">{% trans "Some Of My Skills" %}</p>
                     {% for skill in skills|slice:"4"  %}
                     <span>{{skill.title}}</span> <span class="pull-right">{{skill.rate}}%</span>
                     <div class="progress">
@@ -61,10 +61,23 @@
                     </p>
                     {% get_current_language as LANGUAGE_CODE %}
                     {% if LANGUAGE_CODE == 'en' %}
-                    <a class="btn btn-primary btn-lg" style="position: absolute;right: 40px;" href="{{about.Resume.url}}" download>{% trans "My Cv" %}<i style="position: relative;top:6px;" class="material-icons">download</i></a>
+                    <div id="wrap">
+                      <a href="{{about.Resume.url}}" download class="btn-slide2">
+                        <span class="circle2"><i style="position: relative;top:6px;color:#0078ff;" class="material-icons">download</i></span>
+                        <span class="title2">My Resume</span>
+                        <span class="title-hover2">Click here</span>
+                      </a>
+                    </div>                 
                     {% else %}
-                    <a class="btn btn-primary btn-lg" style="position: absolute;left: 40px;" href="{{about.Resume.url}}" download>{% trans "My Cv" %}<i style="position: relative;top:6px;" class="material-icons">download</i></a>
+                    <div id="wrap">
+                      <a href="{{about.Resume.url}}" download class="btn-slide2">
+                        <span class="circle2"><i style="position: relative;top:6px;color:#0078ff;" class="material-icons">download</i></span>
+                        <span class="title2">السيرة الزاتية</span>
+                        <span class="title-hover2">اضغط هنا</span>
+                      </a>
+                    </div>
                     {% endif %}
+                    {% include "snippets/cv_button_style.html" %}
                   </div>
                 </div>
               </div>
@@ -149,8 +162,8 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="title-box text-center">
-              <h3 class="title-a">
-                {% trans "Portfolio" %}
+              <h3 class="title-a"> 
+                {% trans "My Projects" %}
               </h3>
               
               <div class="line-mf"></div>
@@ -245,57 +258,34 @@
       </div>
     </div><!-- End Testimonials Section -->
 
-    <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog-mf sect-pt4 route">
+    <!-- ======= Certifications Section ======= -->
+    <section id="blog" class="portfolio-mf sect-pt4 route">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
             <div class="title-box text-center">
-              <h3 class="title-a">
-                {% trans "Blog" %}
+              <h3 class="title-a"> 
+                {% trans "My Certifications" %}
               </h3>
-              
               <div class="line-mf"></div>
             </div>
           </div>
         </div>
         <div class="row">
-          {% for blog in blogs %}
-          <div class="col-md-4">
-            <div class="card card-blog">
-              <div class="card-img">
-                <img src="{{blog.image.url}}" alt="" class="img-fluid">
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    {% get_current_language as LANGUAGE_CODE %}
-                    {% if LANGUAGE_CODE == 'en' %}
-                    <h6 class="category">{{blog.category}}</h6>
-                    {% else %}
-                    <h6 class="category">{{blog.category_ar}}</h6>
-                    {% endif %}
-                  </div>
+          {% for certify in Certifications %}
+          <div class="col-md-4" >
+            <div class="work-box" style="box-shadow:-14px 15px 28px 3px rgba(36,33,33,0.75);">
+              <a href="{{certify.image.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox">
+                <div class="work-img">
+                  <img src="{{certify.image.url}}" alt="" class="img-fluid">
                 </div>
-                {% get_current_language as LANGUAGE_CODE %}
-                {% if LANGUAGE_CODE == 'en' %}
-                <h3 class="card-title">{{blog.title}}</h3>
-                <p class="card-description">
-                  {{blog.description|slice:"0:100"}}
-                </p>
-                {% else %}
-                <h3 class="card-title">{{blog.title_ar}}</h3>
-                <p class="card-description">
-                  {{blog.description_ar|slice:"0:100"}}
-                </p>
-                {% endif %}
-              </div>
+              </a>
             </div>
           </div>
           {% endfor %}
         </div>
       </div>
-    </section><!-- End Blog Section -->
+    </section>
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static '' %}img/overlay-bg.jpg)">
@@ -318,22 +308,22 @@
                         <div class="row">
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="text" name="name" class="form-control" id="name" placeholder={% trans  "Your Name"%} required>
+                              <input type="text" name="name" class="form-control" id="name" placeholder={% trans "Name" %} required>
                             </div>
                           </div>
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="email" class="form-control" name="email" id="email" placeholder={% trans  "Your Email"%} required>
+                              <input type="email" class="form-control" name="email" id="email" placeholder={% trans "Email" %} required>
                             </div>
                           </div>
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="text" class="form-control" name="subject" id="subject" placeholder={% trans  "Subject"%} required>
+                              <input type="text" class="form-control" name="subject" id="subject" placeholder={% trans "Subject" %} required>
                             </div>
                           </div>
                           <div class="col-md-12">
                             <div class="form-group">
-                              <textarea class="form-control" name="message" rows="5" placeholder={% trans "Message"%} required></textarea>
+                              <textarea class="form-control" name="message" rows="5" placeholder={% trans "Message" %} required></textarea>
                             </div>
                           </div>
                           <div class="col-md-12 text-center mt-5">
@@ -387,4 +377,5 @@
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
+  
 {% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-08 23:38+0200\n"
+"POT-Creation-Date: 2022-09-11 16:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,18 +27,17 @@ msgid "name_ar"
 msgstr ""
 
 #: .\portfolio\models.py:7 .\portfolio\models.py:46 .\portfolio\models.py:95
-#: .\portfolio\models.py:106 .\portfolio\templates\project-details.html:71
-#: .\portfolio\templates\project-details.html:74
+#: .\portfolio\templates\project-details.html:60
+#: .\portfolio\templates\project-details.html:63
 msgid "description"
 msgstr ""
 
 #: .\portfolio\models.py:8 .\portfolio\models.py:47 .\portfolio\models.py:96
-#: .\portfolio\models.py:107
 msgid "description_ar"
 msgstr ""
 
 #: .\portfolio\models.py:9 .\portfolio\models.py:83 .\portfolio\models.py:94
-#: .\portfolio\models.py:105
+#: .\portfolio\models.py:103
 msgid "image"
 msgstr ""
 
@@ -95,12 +94,11 @@ msgid "jobs_for"
 msgstr ""
 
 #: .\portfolio\models.py:28 .\portfolio\models.py:36 .\portfolio\models.py:44
-#: .\portfolio\models.py:55 .\portfolio\models.py:103
+#: .\portfolio\models.py:55
 msgid "title"
 msgstr ""
 
 #: .\portfolio\models.py:29 .\portfolio\models.py:45 .\portfolio\models.py:56
-#: .\portfolio\models.py:104
 msgid "title_ar"
 msgstr ""
 
@@ -140,11 +138,11 @@ msgstr ""
 msgid "project_name_ar"
 msgstr ""
 
-#: .\portfolio\models.py:67 .\portfolio\models.py:108
+#: .\portfolio\models.py:67
 msgid "category"
 msgstr ""
 
-#: .\portfolio\models.py:68 .\portfolio\models.py:109
+#: .\portfolio\models.py:68
 msgid "category_ar"
 msgstr ""
 
@@ -176,7 +174,7 @@ msgstr ""
 msgid "project_desc_ar"
 msgstr ""
 
-#: .\portfolio\models.py:77 .\portfolio\templates\home.html:152
+#: .\portfolio\models.py:77 .\project\settings.py:97 .\project\settings.py:100
 msgid "Portfolio"
 msgstr ""
 
@@ -188,104 +186,112 @@ msgstr ""
 msgid "Testimonial"
 msgstr ""
 
-#: .\portfolio\models.py:111 .\portfolio\templates\home.html:254
-#: .\templates\snippets\navbar.html:15 .\templates\snippets\navbar.html:45
-msgid "Blog"
+#: .\portfolio\models.py:105
+msgid "Certifications"
 msgstr ""
 
 #: .\portfolio\templates\home.html:3
 msgid "My Portfolio"
 msgstr ""
 
-#: .\portfolio\templates\home.html:25 .\portfolio\templates\home.html:28
+#: .\portfolio\templates\home.html:25 .\portfolio\templates\home.html:29
+#: .\portfolio\templates\home.html:298
 msgid "Name"
 msgstr ""
 
-#: .\portfolio\templates\home.html:26 .\portfolio\templates\home.html:29
+#: .\portfolio\templates\home.html:26 .\portfolio\templates\home.html:30
 msgid "Profile"
 msgstr ""
 
-#: .\portfolio\templates\home.html:31
+#: .\portfolio\templates\home.html:27 .\portfolio\templates\home.html:303
 msgid "Email"
 msgstr ""
 
-#: .\portfolio\templates\home.html:32
+#: .\portfolio\templates\home.html:33
 msgid "Phone"
 msgstr ""
 
-#: .\portfolio\templates\home.html:37
-msgid "Skill"
+#: .\portfolio\templates\home.html:38
+msgid "Some Of My Skills"
 msgstr ""
 
-#: .\portfolio\templates\home.html:50
+#: .\portfolio\templates\home.html:51
 msgid "About me"
 msgstr ""
 
-#: .\portfolio\templates\home.html:63 .\portfolio\templates\home.html:65
+#: .\portfolio\templates\home.html:64 .\portfolio\templates\home.html:66
 msgid "My Cv"
 msgstr ""
 
-#: .\portfolio\templates\home.html:83 .\templates\snippets\navbar.html:13
+#: .\portfolio\templates\home.html:84 .\templates\snippets\navbar.html:13
 #: .\templates\snippets\navbar.html:43
 msgid "Services"
 msgstr ""
 
-#: .\portfolio\templates\home.html:313
+#: .\portfolio\templates\home.html:153 .\templates\snippets\navbar.html:14
+msgid "My Projects"
+msgstr ""
+
+#: .\portfolio\templates\home.html:255 .\templates\snippets\navbar.html:15
+msgid "My Certifications"
+msgstr ""
+
+#: .\portfolio\templates\home.html:289
 msgid "Send Message Us"
 msgstr ""
 
-#: .\portfolio\templates\home.html:322
-msgid "Your Name"
-msgstr ""
-
-#: .\portfolio\templates\home.html:327
-msgid "Your Email"
-msgstr ""
-
-#: .\portfolio\templates\home.html:332
+#: .\portfolio\templates\home.html:308
 msgid "Subject"
 msgstr ""
 
-#: .\portfolio\templates\home.html:337
+#: .\portfolio\templates\home.html:313
 msgid "Message"
 msgstr ""
 
-#: .\portfolio\templates\home.html:341
+#: .\portfolio\templates\home.html:317
 msgid "Send Message"
 msgstr ""
 
-#: .\portfolio\templates\home.html:350
+#: .\portfolio\templates\home.html:326
 msgid "Get in Touch"
 msgstr ""
 
-#: .\portfolio\templates\project-details.html:5
-#: .\portfolio\templates\project-details.html:7
-#: .\portfolio\templates\project-details.html:17
+#: .\portfolio\templates\project-details.html:6
+#: .\portfolio\templates\project-details.html:8
 #: .\portfolio\templates\project-details.html:19
+#: .\portfolio\templates\project-details.html:21
 msgid "Details"
 msgstr ""
 
-#: .\portfolio\templates\project-details.html:51
-#: .\portfolio\templates\project-details.html:53
+#: .\portfolio\templates\project-details.html:40
+#: .\portfolio\templates\project-details.html:42
 msgid "info"
 msgstr ""
 
-#: .\portfolio\templates\project-details.html:58
-#: .\portfolio\templates\project-details.html:61
+#: .\portfolio\templates\project-details.html:47
+#: .\portfolio\templates\project-details.html:50
 msgid "Category"
 msgstr ""
 
-#: .\portfolio\templates\project-details.html:59
-#: .\portfolio\templates\project-details.html:62
+#: .\portfolio\templates\project-details.html:48
+#: .\portfolio\templates\project-details.html:51
 msgid "Client"
 msgstr ""
 
-#: .\portfolio\templates\project-details.html:64
+#: .\portfolio\templates\project-details.html:53
 msgid "Project date"
 msgstr ""
 
-#: .\portfolio\templates\project-details.html:65
+#: .\portfolio\templates\project-details.html:54
 msgid "Project URL"
+msgstr ""
+
+#: .\project\settings.py:94
+msgid "Karim Aboelazm"
+msgstr ""
+
+#: .\project\settings.py:118
+msgid "Welcome to My Portfolio"
 msgstr ""
 
 #: .\templates\snippets\navbar.html:6
@@ -298,10 +304,6 @@ msgstr ""
 
 #: .\templates\snippets\navbar.html:12 .\templates\snippets\navbar.html:42
 msgid "About"
-msgstr ""
-
-#: .\templates\snippets\navbar.html:14 .\templates\snippets\navbar.html:44
-msgid "Work"
 msgstr ""
 
 #: .\templates\snippets\navbar.html:16 .\templates\snippets\navbar.html:46
@@ -318,4 +320,12 @@ msgstr ""
 
 #: .\templates\snippets\navbar.html:36 .\templates\snippets\navbar.html:66
 msgid "English"
+msgstr ""
+
+#: .\templates\snippets\navbar.html:44
+msgid "Work"
+msgstr ""
+
+#: .\templates\snippets\navbar.html:45
+msgid "Blog"
 msgstr ""

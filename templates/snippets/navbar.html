@@ -11,10 +11,10 @@
           <li><a class="nav-link scrollto active" href="#hero">{% trans "Home"%}</a></li>
           <li><a class="nav-link scrollto" href="#about">{% trans "About"%}</a></li>
           <li><a class="nav-link scrollto" href="#services">{% trans "Services"%}</a></li>
-          <li><a class="nav-link scrollto " href="#work">{% trans "Work"%}</a></li>
-          <li><a class="nav-link scrollto " href="#blog">{% trans "Blog"%}</a></li>
+          <li><a class="nav-link scrollto " href="#work">{% trans "My Projects"%}</a></li>
+          <li><a class="nav-link scrollto " href="#blog">{% trans "My Certifications"%}</a></li>
           <li><a class="nav-link scrollto" href="#contact">{% trans "Contact"%}</a></li>
-          <li class="dropdown"><a href="#"><span>{% trans "Languages"%}</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href=""><span>{% trans "Languages"%}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li class=""><form  action="{% url 'set_language' %}" method="post">
                 {% csrf_token %}
@@ -44,7 +44,7 @@
           <li><a class="nav-link scrollto " href="/#work">{% trans "Work"%}</a></li>
           <li><a class="nav-link scrollto " href="/#blog">{% trans "Blog"%}</a></li>
           <li><a class="nav-link scrollto" href="/#contact">{% trans "Contact"%}</a></li>
-          <li class="dropdown"><a href="#"><span>{% trans "Languages" %}</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href=""><span>{% trans "Languages" %}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li class=""><form  action="{% url 'set_language' %}" method="post">
                 {% csrf_token %}

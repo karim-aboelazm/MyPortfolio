@@ -1,6 +1,6 @@
 {% load static i18n %}
 <!-- ======= Hero Section ======= -->
-<div id="hero" class="hero route bg-image" style="background-image: url({% static '' %}img/hero-bg.jpg)">
+<div id="hero" class="hero route bg-image" style="background-image: url({% static '' %}img/hero_.png)">
     <div class="overlay-itro"></div>
     <div class="hero-content display-table">
       <div class="table-cell">
@@ -12,8 +12,7 @@
           {% else %}
           <h1 class="hero-title mb-4">انا {{about.name_ar}}</h1>
           <p class="hero-subtitle"><span class="typed" data-typed-items="{% for job in jobs %}{{job.title_ar}},{% endfor %}"></span></p>
-          {% endif %}
-          
+          {% endif %}  
         </div>
       </div>
     </div>

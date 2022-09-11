@@ -99,16 +99,10 @@ class Testimonial(models.Model):
     def __str__(self):
         return self.name
 
-class Blog(models.Model):
-    title         = models.CharField(max_length=100, verbose_name=_('title'))
-    title_ar      = models.CharField(max_length=100, verbose_name=_('title_ar'))
+class Certifications(models.Model):
     image         = models.ImageField(upload_to='images/', verbose_name=_('image'))
-    description   = models.TextField(verbose_name=_('description'))
-    description_ar= models.TextField(verbose_name=_('description_ar'))
-    category      = models.CharField(max_length=50, verbose_name=_('category'))
-    category_ar   = models.CharField(max_length=50, verbose_name=_('category_ar'),blank=True)
     class Meta:
-        verbose_name_plural = _('Blog')
+        verbose_name_plural = _('Certifications')
     def __str__(self):
-        return self.title
+        return f"certification number : {self.id}"
 

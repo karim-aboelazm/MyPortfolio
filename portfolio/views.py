@@ -16,9 +16,9 @@ class HomePageView(FormView):
         context['jobs'] = Jobs.objects.all().order_by('-id')
         context['services'] = Service.objects.all().order_by('-id')
         context['statistics'] = Statistics.objects.all()
-        context['portfolio'] = Portfolio.objects.all()
+        context['portfolio'] = Portfolio.objects.all().order_by('-id')
         context['testimonials'] = Testimonial.objects.all()
-        context['blogs'] = Blog.objects.all().order_by('-id')
+        context['Certifications'] = Certifications.objects.all().order_by('-id')
         return context
     
     def form_valid(self, form):
@@ -34,7 +34,7 @@ class HomePageView(FormView):
         All Details is {Message}.
 
         Thank You!
-        """.capitalize()
+        """
         send_mail(
             Subject,
             msg,
