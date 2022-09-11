@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
-import psycopg2.extensions
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(dotenv_path=BASE_DIR / '.env')
 SECRET_KEY = "django-insecure-wv-k5v5l658k&pm=$x%3s6umkmxf5q8)+y-l%+cd-_fg$r(^tl"
@@ -57,13 +56,6 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
-}
-
-import dj_database_url
-DATABASES_URL = os.getenv('DATABASES_URL')
-
-DATABASES  = {
-    'default': dj_database_url.config(default=DATABASES_URL,conn_max_age=1800),
 }
 
 
