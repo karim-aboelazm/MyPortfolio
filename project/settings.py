@@ -91,7 +91,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'karimaboelazm28@gmail.com'
-EMAIL_HOST_PASSWORD = 'wxwyiuvyvhbjxivy'
+EMAIL_HOST_PASSWORD = 'xmsjeofriyetmtjd'
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
