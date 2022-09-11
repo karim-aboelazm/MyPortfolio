@@ -35,7 +35,12 @@
                     </div>
                   </div>
                   <div class="skill-mf">
-                    <p class="title-s">{% trans "Skill" %}</p>
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% if LANGUAGE_CODE == 'en' %}
+                    <p class="title-s">Some of my skills</p>
+                    {% else %}
+                    <p class="title-s">بعض المهارات الخاصة بي</p>
+                    {% endif %}
                     {% for skill in skills|slice:"4"  %}
                     <span>{{skill.title}}</span> <span class="pull-right">{{skill.rate}}%</span>
                     <div class="progress">
