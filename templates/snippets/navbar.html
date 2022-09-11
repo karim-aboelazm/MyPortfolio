@@ -21,7 +21,7 @@
                 {% get_current_language as LANGUAGE_CODE %}
                 {% get_available_languages as LANGUAGES %}
                 {% get_language_info_list for available_languages as languages %}
-                <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+                <input name="next" type="hidden" value="{{ request.get_full_path}}" />
                 <input name="language" type="hidden" value="ar" />
                 <button type="submit" class="ml-5" style="background: none;outline: none;border: none;font-size:20px" class=""><img src="{% static 'img/eg.png' %}" style="width:40px;height:40px;outline: none;margin-right:20px ;"  alt="" srcset=""> {% trans "Arabic" %}</button>
               </form></li>
@@ -31,7 +31,7 @@
                 {% get_current_language as LANGUAGE_CODE %}
                 {% get_available_languages as LANGUAGES %}
                 {% get_language_info_list for available_languages as languages %}
-                <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
+                <input name="next" type="hidden" value="{{ request.get_full_path}}" />
                 <input name="language" type="hidden" value="en" />
                 <button type="submit" class="ml-5" style="background: none;outline: none;border: none;font-size:20px" class=""><img src="{% static 'img/us.png' %}" style="width:30px;height:30px;outline: none;margin-right:20px; margin-left: 5px;"  alt="" srcset=""> {% trans "English" %}</button>
               </form></li>
