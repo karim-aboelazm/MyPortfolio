@@ -4,13 +4,14 @@ distlib==0.3.6
 dj-database-url==1.0.0
 Django==4.1.1
 django-bootstrap5==22.1
+django-environ==0.9.0
 django-jazzmin==2.5.0
 filelock==3.8.0
 gunicorn==20.1.0
 Pillow==9.2.0
 pipenv==2022.9.8
 platformdirs==2.5.2
-psycopg2==2.9.3
+psycopg2==2.9.5
 python-dotenv==0.21.0
 sqlparse==0.4.2
 tzdata==2022.2
