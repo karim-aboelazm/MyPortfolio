@@ -13,16 +13,23 @@ DEBUG = True
 ALLOWED_HOSTS = ['karim-aboelazm.herokuapp.com','127.0.0.1']
 
 INSTALLED_APPS = [
-    'jazzmin',
+    'django_crontab',
     "django.contrib.admin",
+    'jazzmin',
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_bootstrap5",
-    "portfolio"
+    "dbbackup",
+    "portfolio",
+    "paypal.standard.ipn",
+    
 ]
+
+PAYPAL_CLIENT_ID  = env('PAYPAL_CLIENT_ID')
+PAYPAL_SECRET_ID  = env('PAYPAL_SECRET_KEY')
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -61,6 +68,16 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+# DATABASES = {
+#    'default': {
+#        'ENGINE'  : env('DATABASE_ENGINE'),
+#        'NAME'    : env('DATABASE_NAME'),
+#        'USER'    : env('DATABASE_USER'),
+#        'PASSWORD': env('DATABASE_PASS'), 
+#        'HOST'    : env('DATABASE_HOST') ,      
+#    }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -258,4 +275,5 @@ JAZZMIN_UI_TWEAKS = {
 }
 
 
+PAYMENT_HOST = '127.0.0.1:8000'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

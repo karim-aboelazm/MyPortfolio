@@ -1,0 +1,152 @@
+{% extends "base_generic.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block auth_content %}
+<section class="vh-100 pt-3" style="background-color: #0c0c0c; height: auto">
+  <div class="container py-2 p-1">
+    <div class="row d-flex justify-content-center align-items-center p-0">
+      <div class="col col-xl-10 p-0">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == 'en' %}
+                <img
+                src="{% static 'img/signup.jpg' %}"
+                alt="login form"
+                class="img-fluid" style="border-radius: 1rem 0 0 1rem;"
+              />
+                {% elif LANGUAGE_CODE == 'ar' %}
+                <img
+                src="{% static 'img/signup.jpg' %}"
+                alt="login form"
+                class="img-fluid" style="border-radius: 0 1rem 1rem 0 ;"
+              />
+                {% elif LANGUAGE_CODE == 'fr' %}
+                <img
+                src="{% static 'img/signup.jpg' %}"
+                alt="login form"
+                class="img-fluid" style="border-radius: 1rem 0 0 1rem;"
+              />
+                {% endif %} 
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-3 text-black">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == 'ar' %}
+                <form class="row g-3" method="post">
+                  {% csrf_token %}
+                  {% csrf_token %}
+                  <div class="d-flex align-items-center  ">
+                    <img src="{% static 'img/logo.png' %}"  style="width:100px; margin:0 auto; opacity:0.7;" />
+                    <span class="h1 fw-bold mb-0"></span>
+                  </div>   
+                  <div class="row g-3">
+                      <div class="col-md-6 form-group">
+                          <div class="form-floating">
+                              <input type="text" name="username" class="form-control" id="name" placeholder="{% trans "username" %}">
+                              <label for="username" class="end-0">{% trans "username" %}</label>
+                          </div>
+                      </div>
+                      <div class="col-md-6 form-group">
+                          <div class="form-floating">
+                              <input type="text" name="full_name" class="form-control end-0" id="name" placeholder="{% trans "Full Name" %}">
+                              <label for="name" class="end-0">{% trans "Full Name" %}</label>
+                          </div>
+                      </div>
+                      <div class="col-md-12 form-group">
+                          <div class="form-floating">
+                              <input type="email" class="form-control" id="email" name="email" placeholder="{% trans "Email" %}">
+                              <label for="email" class="end-0">{% trans "Email" %}</label>
+                          </div>
+                      </div>
+                      <div class="col-12 form-group">
+                          <div class="form-floating">
+                              <input type="password" class="form-control" id="subject" name="password" placeholder="{% trans "password" %}">
+                              <label for="subject" class="end-0">{% trans "password" %}</label>
+                          </div>
+                      </div>
+                      <div class="col-12 form-group">
+                          <div class="form-floating">
+                              <input type="text" class="form-control" id="subject" name="address" placeholder="{% trans "Address" %}">
+                              <label for="subject" class="end-0">{% trans "Address" %}</label>
+                          </div>
+                      </div>
+                      
+                      <div class="col-12">
+                        <button class="btn btn-dark btn-lg btn-block" type="submit">{% trans "Sign up" %}</button>
+                        <span class="mb-5 pb-lg-2" style="color: #393f81;">{% trans "If you've an account?" %} <a href="/student-login/" style="color: #393f81;">{% trans "Login" %}</a></span>
+                      </div>
+                  </div>
+                </form>
+                {% else %} 
+                <form class="row g-3" method="post">
+                  {% csrf_token %}
+                  {% csrf_token %}
+                  <div class="d-flex align-items-center  ">
+                    <img src="{% static 'img/logo.png' %}"  style="width:100px; margin:0 auto; opacity:0.7;" />
+                    <span class="h1 fw-bold mb-0"></span>
+                  </div>   
+                  <div class="row g-3">
+                      <div class="col-md-6 form-group">
+                          <div class="form-floating">
+                              <input type="text" name="username" class="form-control" id="name" placeholder="{% trans "username" %}">
+                              <label for="name">{% trans "username" %}</label>
+                          </div>
+                      </div>
+                      <div class="col-md-6 form-group">
+                          <div class="form-floating">
+                              <input type="text" name="full_name" class="form-control" id="name" placeholder="{% trans "Full Name" %}">
+                              <label for="name">{% trans "Full Name" %}</label>
+                          </div>
+                      </div>
+                      <div class="col-md-12 form-group">
+                          <div class="form-floating">
+                              <input type="email" class="form-control" id="email" name="email" placeholder="{% trans "Email" %}">
+                              <label for="email">{% trans "Email" %}</label>
+                          </div>
+                      </div>
+                      <div class="col-12 form-group">
+                          <div class="form-floating">
+                              <input type="password" class="form-control" id="subject" name="password" placeholder="{% trans "password" %}">
+                              <label for="subject">{% trans "password" %}</label>
+                          </div>
+                      </div>
+                      <div class="col-12 form-group">
+                          <div class="form-floating">
+                              <input type="text" class="form-control" id="subject" name="address" placeholder="{% trans "Address" %}">
+                              <label for="subject">{% trans "Address" %}</label>
+                          </div>
+                      </div>
+                      
+                      <div class="col-12">
+                        <button class="btn btn-dark btn-lg btn-block" type="submit">{% trans "Sign up" %}</button>
+                        <span class="mb-5 pb-lg-2" style="color: #393f81;">{% trans "If you've an account?" %} <a href="/student-login/" style="color: #393f81;">{% trans "Login" %}</a></span>
+                      </div>
+                  </div>
+                </form>
+                {% endif %} 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<!-- Sign Up Style -->
+<style>
+ 
+  .helptext,.form-text
+  {
+      display: none;
+  }
+  .errorlist
+  {
+    color: red;
+  }
+</style>
+
+{% endblock auth_content%}

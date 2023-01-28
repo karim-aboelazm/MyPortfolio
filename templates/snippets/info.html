@@ -7,11 +7,27 @@
         <div class="container">
           {% get_current_language as LANGUAGE_CODE %}
           {% if LANGUAGE_CODE == 'en' %}
-          <h1 class="hero-title mb-4">I am {{about.name}}</h1>
-          <p class="hero-subtitle"><span class="typed" data-typed-items="{% for job in jobs %}{{job.title}},{% endfor %}"></span></p>
+            {% if about.name %}
+              <h1 class="hero-title mb-4">I am {{about.name}}</h1>
+            {% else %}
+              <h1 class="hero-title mb-4">I am John Deo</h1>
+            {% endif %}
+            {% if job.title %}
+              <p class="hero-subtitle"><span class="typed" data-typed-items="{% for job in jobs %}{{job.title}},{% endfor %}"></span></p>
+            {% else %}
+              <p class="hero-subtitle"><span class="typed" data-typed-items="Web Developer,Web Designer"></span></p>
+            {% endif %}
           {% else %}
-          <h1 class="hero-title mb-4">انا {{about.name_ar}}</h1>
-          <p class="hero-subtitle"><span class="typed" data-typed-items="{% for job in jobs %}{{job.title_ar}},{% endfor %}"></span></p>
+            {% if about.name_ar %}
+              <h1 class="hero-title mb-4">انا {{about.name_ar}}</h1>
+            {% else %}
+              <h1 class="hero-title mb-4">انا فلان الفلاني</h1>
+            {% endif %}
+            {% if job.title_ar %}
+              <p class="hero-subtitle"><span class="typed" data-typed-items="{% for job in jobs %}{{job.title_ar}},{% endfor %}"></span></p>
+            {% else %}
+              <p class="hero-subtitle"><span class="typed" data-typed-items="مطور مواقع الكترونيه , مصمم مواقع الكترونيه"></span></p>
+            {% endif %}
           {% endif %}  
         </div>
       </div>

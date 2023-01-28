@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static i18n django_bootstrap5 %}
+{% block title %}{% trans "Karim Aboelazm" %}{% endblock %}
+{% block content %}
+{% include "snippets/info2.html" %}
+<main id="main">
+    <section id="work" class="portfolio-mf sect-pt4 route">
+        <div class="container">
+            <div class="row mb-5" style="margin-top:-150px;">
+                <div class="col-md-8 card mx-auto p-5">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="{% url 'porto:courses'%}" class="text-muted"><i class="fa fa-arrow-left" style="position: relative; top:2px;" aria-hidden="true"></i> all courses</a>
+                            <img src="{% static 'img/cart.png' %}" class="" style="width:100%;" alt="">
+                            <div class="text-buttom">
+                                <p style="padding-bottom: 5px; border-bottom: 2px solid;"><strong>Cart Total</strong></p>
+                                {% if cart %}
+                                <p>$ {{cart.total}}</p>
+                                {% else %}
+                                <p>$ 00.0</p>
+                                {% endif %}
+                                {% if cart.cartcourse_set.all %}
+                                <a class="col-md-12 btn btn-dark" href="{% url 'porto:check_out'%}"><i class="fas fa-money-check-alt mx-2"></i> Check Out</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            {% if cart.cartcourse_set.all %}
+                            <ul class=" pr-5">
+                                {% for cp in cart.cartcourse_set.all  %}
+                                <li class="card p-3 mb-2" style="background-color: rgba(246, 236, 236, 0.612);list-style: none;">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="{{cp.course.poster.url}}" style="width: 100%;" alt="" srcset="">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p> <strong>Course Title :</strong> {{cp.course.title}}</p>
+                                            <p> <strong>Course price :</strong> $ {{cp.rate}}</p>
+                                            <a href="{% url 'porto:manage_cart' cp.id%}?action=rcr" type="button" class="col-md-12 btn btn-danger"> Remove Course <i class="fa fa-trash mx-2"></i> </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                           
+                            {% else %}
+                                <p class="text-center" style="font-size:22px">There are no courses in your cart !</p>
+                                <p class="text-center" style="font-size:50px">&#128533;</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

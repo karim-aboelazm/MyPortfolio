@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static i18n django_bootstrap5 %}
+{% block title %}{% trans "Karim Aboelazm" %}{% endblock %}
+{% block content %}
+{% include "snippets/info2.html" %}
+<main id="main">
+    <section id="work" class="portfolio-mf sect-pt4 route">
+        <div class="container">
+            <div class="row mb-5" style="margin-top:-150px;">
+                <div class="col-md-8 card mx-auto p-5">
+                    <div class="title-box text-center">
+                        <h3 class="""> 
+                            Congratulations <img src="{% static 'img/congratulations.png' %}"  style="width:10%" alt="" srcset=""><br>{{course.title}} Course has been added to your cart.
+                        </h3>
+                        <a href="{% url 'porto:my_cart'%}" class="btn btn-lg bg-dark text-white mt-5"> Check Your Cart <i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

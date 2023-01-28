@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n static %}
+{% if user.is_authenticated %}
+{% block title %}{% trans "Profile" %}{% endblock title %}
+{% block content %}
+{% include "snippets/info2.html" %}
+
+<div class="container mt-5 mb-5 " id="accordionExample">
+  <div class="row card p-5" style="margin-top: -150px;">
+    <a class="col-1" href="{% url 'porto:student_edit_profile' profile.id %}" style="color: #000000">
+      <i class="fas fa-user-edit" style="font-size:24px"></i>
+    </a>
+    <div class="row accordion-item p-4 m-2" style="border-radius: 25px;">
+      <h2 class="text-center"> {% trans "Personal Info" %} </h2>
+      <hr>
+      <div class="col-md-6 mx-auto">
+        <p><span class="font-weight-bold"><strong>{% trans "Username" %} :</strong></span><span> {{request.user.username}}</span></p>
+        <p><span class="font-weight-bold"><strong>{% trans "Full Name" %} :</strong></span><span> {{request.user.students.full_name}}</span></p>
+        {% if request.user.students %}
+        <p><span class="font-weight-bold"><strong>{% trans "Proffession" %} :</strong></span><span> {% trans "Student" %}</span></p>
+        {% elif user.is_authenticated %}
+        <p><span class="font-weight-bold"><strong>{% trans "Proffession" %} :</strong></span><span> {{profile.job}}</span></p>
+        {% endif %}
+        <p><span class="font-weight-bold"><strong>{% trans "Email" %} : </strong></span><span> {{request.user.email}}</span></p>
+        <p><span class="font-weight-bold"><strong>{% trans "Phone" %} : </strong></span><span>{{profile.phone}}</span></p>
+        <p><span class="font-weight-bold"><strong>{% trans "Address" %} : </strong></span><span>{{profile.address}}</span></p>
+        {% if request.user.students %}
+        <p><span class="font-weight-bold"><strong>{% trans "Joined On" %} : </strong></span><span>{{request.user.students.join_on}}</span></p>
+        {% elif user.is_authenticated %}
+        <p><span class="font-weight-bold"><strong>{% trans "Joined On" %} : </strong></span><span>{% now "jS F Y H:i" %}</span></p>
+        {%endif%}
+      </div>
+      <div class="col-md-4 mx-auto">
+          {% if profile.image %}
+            <img src="{{profile.image.url}}" style="height: 300px; width: 300px;" alt="Circle Image" class="img-raised rounded-circle img-fluid mb-5">
+          {% else %}
+            <img src="{% static 'img/default_user.png' %}" style="height: 300px; width: 300px;" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+{% else %}
+    <p>{% trans "Welcome, new user. Please log in." %}</p>
+{% endif %}

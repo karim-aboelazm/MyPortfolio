@@ -1,0 +1,142 @@
+{% extends "base_generic.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% load i18n %}
+{% block auth_content %}
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>{% trans "Your account doesn't have access to this page. To proceed,
+        please login with an account that has access." %}</p>
+    {% else %}
+      <p>{% trans "Please login to see this page." %}</p>
+    {% endif %}
+  {% endif %}
+  <section class="vh-100 pt-4 " style="background-color: #0c0c0c;">
+    <div class="container py-3 ">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem;">
+            <div class="row g-0">
+              <div class="col-md-6 col-lg-5 d-none d-md-block">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == 'en' %}
+                <img
+                src="{% static 'img/signup.jpg' %}"
+                alt="login form"
+                class="img-fluid" style="border-radius: 1rem 0 0 1rem;"
+              />
+                {% elif LANGUAGE_CODE == 'ar' %}
+                <img
+                src="{% static '' %}img/signup.jpg"
+                alt="login form"
+                class="img-fluid" style="border-radius: 0 1rem 1rem 0 ;"
+              />
+                {% elif LANGUAGE_CODE == 'fr' %}
+                <img
+                src="{% static '' %}img/signup.jpg"
+                alt="login form"
+                class="img-fluid" style="border-radius: 1rem 0 0 1rem;"
+              />
+                {% endif %} 
+                
+              </div>
+              <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-3 text-black">
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  <form method="post">
+                    {% csrf_token %}
+                      <div class="d-flex align-items-center mb-3 pb-1 text-center">
+                        <img src="{% static 'img/logo.png' %}"  style="width:100px; margin:0 auto; opacity:0.7;" />
+                        <span class="h1 fw-bold mb-0"></span>
+                      </div>
+
+                      <h5 class="fw-normal" style="letter-spacing: 1px;">{% trans "Sign into your account" %}</h5>
+
+                      
+                    <div class="row g-3 mt-3 mb-3">
+                        <div class="col-md-12 form-group">
+                            <div class="form-floating">
+                                <input type="text" name="username" class="form-control" id="name" placeholder="{% trans "Your Name" %}">
+                                <label for="name" class="end-0">{% trans "username" %}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="email" name="password" placeholder="{% trans "Your Email" %}">
+                                <label for="email" class="end-0">{% trans "password" %}</label>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    {% if form.errors %}
+                    <p style="color:red">{% trans "Your username and password didn't match. Please try again." %}</p>
+                    {% endif %}  
+                    <div class=" mb-1">
+                         <button class="btn btn-dark btn-lg btn-block" type="submit">{% trans "Login" %}</button>
+                    </div>
+                    
+                    <!-- <input type="hidden" name="next" value="{{ next }}" /> -->
+                    <p class="" style="color: #393f81;">{% trans "Forgot Password ?  " %}<a href="{% url 'porto:forgot_password' %}" style="color: #393f81;">{% trans "Reset Now" %}</a></p>
+                    <p class="" style="color: #393f81;">{% trans "Don't have an account?" %}<a href="{% url 'porto:student_register'%} " style="color: #393f81;"> {% trans "Register here" %}</a></p>
+                    <a href="#!" class="small text-muted">{% trans "Terms of use." %}</a>
+                    <a href="#!" class="small text-muted">{% trans "Privacy policy" %}</a>
+                  </form>
+                  {% else %} 
+                  <form method="post">
+                    {% csrf_token %}
+                      <div class="d-flex align-items-center mb-3 pb-1">
+                        <img src="{% static 'img/logo.png' %}"  style="width:100px; margin:0 auto; opacity:0.7;" />
+                        <span class="h1 fw-bold mb-0"></span>
+                      </div>
+
+                      <h5 class="fw-normal" style="letter-spacing: 1px;">{% trans "Sign into your account" %}</h5>
+
+                      
+                    <div class="row g-3 mt-3 mb-3">
+                        <div class="col-md-12 form-group">
+                            <div class="form-floating">
+                                <input type="text" name="username" class="form-control" id="name" placeholder="{% trans "Your Name" %}">
+                                <label for="name">{% trans "username" %}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="email" name="password" placeholder="{% trans "Your Email" %}">
+                                <label for="email">{% trans "password" %}</label>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    {% if form.errors %}
+                    <p style="color:red">{% trans "Your username and password didn't match. Please try again." %}</p>
+                    {% endif %}  
+                    <div class=" mb-1">
+                         <button class="btn btn-dark btn-lg btn-block" type="submit">{% trans "Login" %}</button>
+                    </div>
+                    
+                    <!-- <input type="hidden" name="next" value="{{ next }}" /> -->
+                    <p class="" style="color: #393f81;">{% trans "Forgot Password ?  " %}<a href="{% url 'porto:forgot_password' %}" style="color: #393f81;">{% trans "Reset Now" %}</a></p>
+                    <p class="" style="color: #393f81;">{% trans "Don't have an account?" %}<a href="{% url 'porto:student_register' %} " style="color: #393f81;"> {% trans "Register here" %}</a></p>
+                    <a href="#!" class="small text-muted">{% trans "Terms of use." %}</a>
+                    <a href="#!" class="small text-muted">{% trans "Privacy policy" %}</a>
+                  </form>
+                  {% endif %} 
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Login Style  -->
+<style>
+  
+  a{
+    text-decoration:none;
+  }
+</style>
+
+{% endblock auth_content %}

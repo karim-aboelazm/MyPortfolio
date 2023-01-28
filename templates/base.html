@@ -51,6 +51,11 @@
     {% include "snippets/footer.html" %}
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    
+    {% block scripts %}
+      
+    {% endblock scripts %}
+      
     {% include "snippets/scripts.html" %}
   </body>
 

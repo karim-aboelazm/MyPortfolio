@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static i18n django_bootstrap5 %}
+{% block title %}{% trans "Karim Aboelazm" %}{% endblock %}
+{% block content %}
+{% include "snippets/info2.html" %}
+    <main id="main">
+        <section id="work" class="portfolio-mf sect-pt4 route">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                    <div class="title-box text-center">
+                        <h3 class="title-a"> 
+                        {% trans "Our Courses" %}
+                        </h3>
+                        <div class="line-mf"></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% if course_list %}
+                    {% for course in course_list  %}
+                        <div class="col-md-4">
+                            <div class="work-box">
+                                <div class="work-img p-5">
+                                    <img src="{{course.poster.url}}" alt="" class="img-fluid mx-auto" style="width:100%">
+                                </div>
+                                </a>
+                                <div class="work-content">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% if LANGUAGE_CODE == 'en' %}
+                                    <h2 class="w-title">{{course.title}}</h2>
+                                    <div class="w-more">
+                                        <span class="w-ctegory">Created at :</span><span class="w-date"> {{course.started_at|timesince}} ago</span>
+                                    </div>
+                                    <div class="w-more">
+                                        {% if course.discount > 0 %}
+                                            {% if  course.price > 0 %}
+                                            <span class="w-ctegory">Price : </span><span class="w-date"> <del>$ {{course.price}} </del> -  $ {{course.price_after_discount}}</span>
+                                            {% else %}
+                                            <span class="w-ctegory">Free</span>
+                                            {% endif %}
+                                        {% else %}
+                                            <span class="w-ctegory">Price : </span><span class="w-date">$ {{course.price}}</span>
+                                        {% endif %}
+                                    </div>
+                                    {% else %}
+                                    <h2 class="w-title">{{course.title_ar}}</h2>
+                                    <div class="w-more">
+                                        <span class="w-ctegory">تم انشاءه : </span> / <span class="w-date"> منذ  {{course.started_at|timesince}} </span>
+                                    </div>
+                                    <div class="w-more">
+                                        {% if course.discount > 0 %}
+                                            {% if  course.price > 0 %}
+                                            <span class="w-ctegory">السعر : </span><span class="w-date"> <del>$ {{course.price}} </del> -  $ {{course.price_after_discount}}</span>
+                                            {% else %}
+                                            <span class="w-ctegory">مجانا</span>
+                                            {% endif %}
+                                        {% else %}
+                                            <span class="w-ctegory">السعر : </span><span class="w-date">$ {{course.price}}</span>
+                                        {% endif %}
+                                    </div>
+                                    {% endif %}
+                                    </div>
+                                    <div class="col-sm-4">
+                                    <div class="w-like">
+                                        <a href="{% url 'porto:course-details' course.id %}"> <span class="bi bi-plus-circle"></span></a>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                        <div class="col-md-12 mx-auto my-5">
+                            <h1 class="text-center">Opps !!</h1>
+                            <h2 class="text-center">There are no Courses yet ! &#128549;</h2>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section><!-- End Portfolio Section --> 
+    </main>
+{% endblock content %}
