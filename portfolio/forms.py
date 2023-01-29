@@ -1,5 +1,4 @@
 from .validators import validate_email
-from paypal.pro.fields import CreditCardField, CreditCardExpiryField, CreditCardCVV2Field, CountryField
 from django import forms
 from .models import *
 

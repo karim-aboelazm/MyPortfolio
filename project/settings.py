@@ -1,9 +1,10 @@
 import os
+import environ
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-import environ
 env = environ.Env()
 environ.Env.read_env()
 
@@ -14,8 +15,8 @@ ALLOWED_HOSTS = ['karim-aboelazm.herokuapp.com','127.0.0.1']
 
 INSTALLED_APPS = [
     'django_crontab',
-    "django.contrib.admin",
     'jazzmin',
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -24,8 +25,6 @@ INSTALLED_APPS = [
     "django_bootstrap5",
     "dbbackup",
     "portfolio",
-    "paypal.standard.ipn",
-    
 ]
 
 PAYPAL_CLIENT_ID  = env('PAYPAL_CLIENT_ID')

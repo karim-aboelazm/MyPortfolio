@@ -17,7 +17,6 @@ urlpatterns = [
     path("", include("portfolio.urls", namespace="porto")),
     path("admin/", admin.site.urls),
     path('i18n/',include('django.conf.urls.i18n')),
-    path('paypal/', include('paypal.standard.ipn.urls')),
     path("404/", custom_page_not_found),
     path("500/", custom_server_error),
 ]

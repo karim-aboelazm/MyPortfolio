@@ -163,7 +163,7 @@
     </div><!-- End Counter Section -->
 
     <!-- ======= Portfolio Section ======= -->
-    <section id="work" class="portfolio-mf sect-pt4 route">
+    <section id="work" class="portfolio-mf sect-pt4 route display-content">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
@@ -211,6 +211,48 @@
             </div>
           </div>
           {% endfor %}
+          <div class="row mt-5">
+            <div class="col-md-12 mx-auto" >
+                <nav aria-label="Page navigation example pagination_wrap" >
+                    <ul class="pagination justify-content-center" >
+                    {% if portfolio.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ portfolio.previous_page_number }}" aria-label="Previous" style="border-radius: 0;">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+                    {%else%}
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true" style="border-radius: 0;" >
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+                      {% endif %}
+                      {% for i in portfolio.paginator.page_range %}
+                      {% if i == portfolio.number  %}
+                      <li class="page-item active"><a class="page-link" style="border-radius: 0;" href="?page={{i}}">{{i}}</a></li>
+                      {%else%}
+                      <li class="page-item"><a class="page-link" style="border-radius: 0;" href="?page={{i}}">{{i}}</a></li>
+                      {% endif %}
+                        
+                      {% endfor %}
+                      {% if portfolio.has_next %}
+                      <li class="page-item">
+                        <a class="page-link" href="?page={{ portfolio.next_page_number }}" aria-label="Next" style="border-radius: 0;">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                      {%else%}
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next" tabindex="-1" aria-disabled="true" style="border-radius: 0;">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                      {%endif%}
+                    </ul>
+                </nav>
+            </div>
+          </div>
           
         </div>
       </div>
@@ -228,7 +270,7 @@
     </div><!-- End Testimonials Section -->
 
     <!-- ======= Certifications Section ======= -->
-    <section id="blog" class="portfolio-mf sect-pt4 route">
+    <section id="blog" class="portfolio-mf sect-pt4 route display-content">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
@@ -252,6 +294,48 @@
             </div>
           </div>
           {% endfor %}
+          <div class="row mt-5">
+            <div class="col-md-12 mx-auto" >
+                <nav aria-label="Page navigation example pagination_wrap" >
+                    <ul class="pagination justify-content-center" >
+                    {% if Certifications.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ Certifications.previous_page_number }}" aria-label="Previous" style="border-radius: 0;">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+                    {%else%}
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true" style="border-radius: 0;" >
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+                      {% endif %}
+                      {% for i in Certifications.paginator.page_range %}
+                      {% if i == Certifications.number  %}
+                      <li class="page-item active"><a class="page-link" style="border-radius: 0;" href="?page={{i}}">{{i}}</a></li>
+                      {%else%}
+                      <li class="page-item"><a class="page-link" style="border-radius: 0;" href="?page={{i}}">{{i}}</a></li>
+                      {% endif %}
+                        
+                      {% endfor %}
+                      {% if Certifications.has_next %}
+                      <li class="page-item">
+                        <a class="page-link" href="?page={{ Certifications.next_page_number }}" aria-label="Next" style="border-radius: 0;">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                      {%else%}
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next" tabindex="-1" aria-disabled="true" style="border-radius: 0;">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                      {%endif%}
+                    </ul>
+                </nav>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -346,6 +430,7 @@
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
-  
+
+
 {% endblock %}
 

@@ -22,14 +22,7 @@ urlpatterns = [
     path('empty-cart/',EmptyCartView.as_view(),name='empty_cart'),
      # check out url
     path('check-out/',CheckOutView.as_view(),name='check_out'),
-    path('proceed-to-pay/',CheckOutWithRazorPay.as_view(),name='proceed_to_pay'),
-    # payments methods with khalti url
-    path("paypal-request/", PaypalRequestView.as_view(), name="paypal_request"),
-    
-    # payments methods with esewa url
-    path('credit-card-request/',CreditCardRequestView.as_view(), name="credit_card_request"),
     path('course-<int:pk>-had-payment-by-username-<str:usr>-paidwithpaypalAndPaymentStatusIsCompleted/',OrderHadFinishedView.as_view(),name="order_had_finished"),
-    
     
 ]
    

@@ -1,14 +1,15 @@
 from django.views.generic import TemplateView,FormView,CreateView,UpdateView
+from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib.auth import authenticate , login ,logout
 from django.contrib.auth.views import PasswordChangeView
-from .utils import password_reset_token
-from django.http import JsonResponse
-from django.views.generic.base import View
-from django.shortcuts import render, get_object_or_404,redirect
 from django.shortcuts import render,reverse
+from django.core.paginator import Paginator
+from django.views.generic.base import View
+from .utils import password_reset_token
 from django.core.mail import send_mail
-from django.contrib import messages
+from django.http import JsonResponse
 from django.urls import reverse_lazy
+from django.contrib import messages
 from django.conf import settings
 from .models import *
 from .forms import *
@@ -34,9 +35,17 @@ class HomePageView(FormView):
         context['skills'] = Skill.objects.all().order_by('-id')
         context['services'] = Service.objects.all().order_by('-id')
         context['statistics'] = Statistics.objects.all()
-        context['portfolio'] = Portfolio.objects.all().order_by('-id')
+        portfolio = Portfolio.objects.all().order_by('-id')
+        paginator1 = Paginator(portfolio,6)
+        page_number1 = self.request.GET.get('page')
+        portfolio_list = paginator1.get_page(page_number1)
+        context['portfolio'] = portfolio_list
         context['testimonials'] = Testimonial.objects.all()
-        context['Certifications'] = Certifications.objects.all().order_by('-id')
+        certifications = Certifications.objects.all().order_by('-id')
+        paginator2 = Paginator(certifications,6)
+        page_number2 = self.request.GET.get('page')
+        certifications_list = paginator2.get_page(page_number2)
+        context['Certifications'] = certifications_list
         return context
     
     def form_valid(self, form):
@@ -346,7 +355,6 @@ class EmptyCartView(PortofolioMixin,View):
             cart.total = 0
             cart.save()
         return redirect('/my-cart/')
-
 # check out page view
 class CheckOutView(PortofolioMixin, FormView):
     template_name = "cart_pages/check_out.html"
@@ -389,36 +397,8 @@ class CheckOutView(PortofolioMixin, FormView):
             return redirect('porto:home')
         return super().form_valid(form)
   
-class CheckOutWithRazorPay(PortofolioMixin,View):
-    def get(self, request,*args, **kwargs):
-        cart_id = self.request.session.get('cart_id',None)
-        if cart_id:
-            cart = Cart.objects.get(id=cart_id)
-            total_price = cart.total
-            # for item in cart.cartcourse_set.all:
-            #     total_price += item.total
-            return JsonResponse({
-                "total_price":total_price
-                })
-        else:
-            cart = None
-            total_price = 0
-            return JsonResponse({
-                "total_price":total_price
-                })
-                
-class PaypalRequestView(PortofolioMixin,View): 
-    def get(self, request,*args, **kwargs):
-        context={"order" : CourseOrder.objects.get(id = request.GET.get("o_id")),"client_id" : settings.PAYPAL_CLIENT_ID}
-        return render(request,'payment_pages/paypalrequest.html',context)
-
-class CreditCardRequestView(PortofolioMixin,View):
-    def get(self, request,*args, **kwargs):
-        context={"order":CourseOrder.objects.get(id = request.GET.get("o_id"))}
-        return render(request,'payment_pages/credit_card_request.html',context)
-
 class OrderHadFinishedView(PortofolioMixin,FormView):
-    template_name= "order_pages/order_content.html"
+    template_name= "course_pages/course_content.html"
     form_class = ReviewForm
     
     def get_context_data(self, **kwargs):
@@ -438,5 +418,3 @@ class OrderHadFinishedView(PortofolioMixin,FormView):
     def get_success_url(self):
            return reverse_lazy('porto:order_had_finished', kwargs={'usr': self.kwargs['usr']})
     
-    
-
