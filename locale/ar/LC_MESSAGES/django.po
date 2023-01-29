@@ -8,334 +8,879 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-11 16:41+0200\n"
+"POT-Creation-Date: 2023-01-29 21:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: .\portfolio\models.py:5 .\portfolio\models.py:90
+#: .\portfolio\models.py:7 .\portfolio\models.py:92
 msgid "name"
 msgstr "الاسم"
 
-#: .\portfolio\models.py:6 .\portfolio\models.py:91
+#: .\portfolio\models.py:8 .\portfolio\models.py:93
 msgid "name_ar"
 msgstr "الاسم بالعربي"
 
-#: .\portfolio\models.py:7 .\portfolio\models.py:46 .\portfolio\models.py:95
-#: .\portfolio\templates\project-details.html:60
-#: .\portfolio\templates\project-details.html:63
+#: .\portfolio\models.py:9 .\portfolio\models.py:48 .\portfolio\models.py:97
+#: .\portfolio\templates\course_pages\one_course.html:183
+#: .\portfolio\templates\project_pages\project-details.html:60
+#: .\portfolio\templates\project_pages\project-details.html:63
 msgid "description"
 msgstr "الوصف"
 
-#: .\portfolio\models.py:8 .\portfolio\models.py:47 .\portfolio\models.py:96
+#: .\portfolio\models.py:10 .\portfolio\models.py:49 .\portfolio\models.py:98
 msgid "description_ar"
 msgstr "الوصف بالعربي"
 
-#: .\portfolio\models.py:9 .\portfolio\models.py:83 .\portfolio\models.py:94
-#: .\portfolio\models.py:103
+#: .\portfolio\models.py:11 .\portfolio\models.py:85 .\portfolio\models.py:96
+#: .\portfolio\models.py:105 .\portfolio\models.py:213
 msgid "image"
 msgstr "الصورة"
 
-#: .\portfolio\models.py:10 .\portfolio\models.py:92
+#: .\portfolio\models.py:12 .\portfolio\models.py:94
 msgid "job"
 msgstr "الوظيفة"
 
-#: .\portfolio\models.py:11 .\portfolio\models.py:93
+#: .\portfolio\models.py:13 .\portfolio\models.py:95
 msgid "job_ar"
 msgstr "الوظيفة بالعربي"
 
-#: .\portfolio\models.py:12
+#: .\portfolio\models.py:14
 msgid "email"
 msgstr "البريد الالكتروني"
 
-#: .\portfolio\models.py:13
+#: .\portfolio\models.py:15 .\portfolio\models.py:214
 msgid "phone"
 msgstr "رقم الهاتف"
 
-#: .\portfolio\models.py:14
+#: .\portfolio\models.py:16 .\portfolio\models.py:212
 msgid "address"
 msgstr "محل الاقامة  "
 
-#: .\portfolio\models.py:15
+#: .\portfolio\models.py:17
 msgid "address_ar"
 msgstr "محل الاقامة بالعربي"
 
-#: .\portfolio\models.py:16
+#: .\portfolio\models.py:18
 msgid "facebook"
 msgstr "الفيسبوك"
 
-#: .\portfolio\models.py:17
+#: .\portfolio\models.py:19
 msgid "github"
 msgstr "الجيت هب"
 
-#: .\portfolio\models.py:18
+#: .\portfolio\models.py:20
 msgid "whatsapp"
 msgstr "الواتساب"
 
-#: .\portfolio\models.py:19
+#: .\portfolio\models.py:21
 msgid "linkedin"
 msgstr "لينكيد ان"
 
-#: .\portfolio\models.py:20
+#: .\portfolio\models.py:22
 msgid "Resume"
 msgstr "السيرة الزاتية"
 
-#: .\portfolio\models.py:22
+#: .\portfolio\models.py:24
 msgid "About Me"
 msgstr "نبذة عني"
 
-#: .\portfolio\models.py:27
+#: .\portfolio\models.py:29
 msgid "jobs_for"
 msgstr "لمن هذه الوظائف"
 
-#: .\portfolio\models.py:28 .\portfolio\models.py:36 .\portfolio\models.py:44
-#: .\portfolio\models.py:55
+#: .\portfolio\models.py:30 .\portfolio\models.py:38 .\portfolio\models.py:46
+#: .\portfolio\models.py:57
 msgid "title"
 msgstr "عنوان"
 
-#: .\portfolio\models.py:29 .\portfolio\models.py:45 .\portfolio\models.py:56
+#: .\portfolio\models.py:31 .\portfolio\models.py:47 .\portfolio\models.py:58
 msgid "title_ar"
 msgstr "عنوان بالعربي"
 
-#: .\portfolio\models.py:31
+#: .\portfolio\models.py:33
 msgid "Jobs"
 msgstr "الوظائف"
 
-#: .\portfolio\models.py:37
+#: .\portfolio\models.py:39
 msgid "rate"
 msgstr "نسبة"
 
-#: .\portfolio\models.py:39
+#: .\portfolio\models.py:41
 msgid "Skills"
 msgstr "مهارات"
 
-#: .\portfolio\models.py:48 .\portfolio\models.py:58
+#: .\portfolio\models.py:50 .\portfolio\models.py:60
 msgid "icon"
 msgstr "رمز"
 
-#: .\portfolio\models.py:50
+#: .\portfolio\models.py:52
 msgid "Service"
 msgstr "الخدمات"
 
-#: .\portfolio\models.py:57
+#: .\portfolio\models.py:59
 msgid "number"
 msgstr "رقم"
 
-#: .\portfolio\models.py:60
+#: .\portfolio\models.py:62
 msgid "Statistics"
 msgstr "الاحصئيات"
 
-#: .\portfolio\models.py:65
+#: .\portfolio\models.py:67
 msgid "project_name"
 msgstr "اسم المشروع"
 
-#: .\portfolio\models.py:66
+#: .\portfolio\models.py:68
 msgid "project_name_ar"
 msgstr "اسم المشروع بالعربي"
 
-#: .\portfolio\models.py:67
+#: .\portfolio\models.py:69
 msgid "category"
 msgstr "القسم"
 
-#: .\portfolio\models.py:68
+#: .\portfolio\models.py:70
 msgid "category_ar"
 msgstr "القسم بالعربي"
 
-#: .\portfolio\models.py:69
+#: .\portfolio\models.py:71
 msgid "client"
 msgstr "اسم العميل"
 
-#: .\portfolio\models.py:70
+#: .\portfolio\models.py:72
 msgid "client_ar"
 msgstr "اسم العميل بالعربي"
 
-#: .\portfolio\models.py:71
+#: .\portfolio\models.py:73
 msgid "project_date"
 msgstr "تاريخ المشروع"
 
-#: .\portfolio\models.py:72
+#: .\portfolio\models.py:74
 msgid "project_url"
 msgstr "رابط المشروع"
 
-#: .\portfolio\models.py:73
+#: .\portfolio\models.py:75
 msgid "project_image"
 msgstr "صوة المشروع"
 
-#: .\portfolio\models.py:74
+#: .\portfolio\models.py:76
 msgid "project_desc"
 msgstr "وصف المشروع"
 
-#: .\portfolio\models.py:75
+#: .\portfolio\models.py:77
 msgid "project_desc_ar"
 msgstr "وصف المشروع بالعربي"
 
-#: .\portfolio\models.py:77 .\project\settings.py:97 .\project\settings.py:100
+#: .\portfolio\models.py:79 .\project\settings.py:120
+#: .\project\settings.py:123
 msgid "Portfolio"
 msgstr "اعمالي"
 
-#: .\portfolio\models.py:85
+#: .\portfolio\models.py:87
 msgid "ProjectImages"
 msgstr "صور المشروع"
 
-#: .\portfolio\models.py:98
+#: .\portfolio\models.py:100
 msgid "Testimonial"
 msgstr "شهادة العملاء"
 
-#: .\portfolio\models.py:105
+#: .\portfolio\models.py:107
 msgid "Certifications"
 msgstr "شهاداتي"
 
-#: .\portfolio\templates\home.html:3
-msgid "My Portfolio"
-msgstr "ملفي الشخصي"
+#: .\portfolio\models.py:112
+msgid "Course Title"
+msgstr "عنوان الكورس بالغة الانجليزية"
 
-#: .\portfolio\templates\home.html:25 .\portfolio\templates\home.html:29
-#: .\portfolio\templates\home.html:298
-msgid "Name"
-msgstr "الاسم"
+#: .\portfolio\models.py:113
+msgid "Course Title Arabic"
+msgstr "عنوان الكورس باللغة العربية"
 
-#: .\portfolio\templates\home.html:26 .\portfolio\templates\home.html:30
-msgid "Profile"
-msgstr "المهنة"
+#: .\portfolio\models.py:114
+msgid "Course Description Arabic"
+msgstr "وصف الكورس باللغة العربية"
 
-#: .\portfolio\templates\home.html:27 .\portfolio\templates\home.html:303
-msgid "Email"
-msgstr "البريد الالكتروني"
+#: .\portfolio\models.py:116
+msgid "Course language"
+msgstr "لغة الكورس باللغة الانجليزية"
 
-#: .\portfolio\templates\home.html:33
-msgid "Phone"
-msgstr "رقم الهاتف"
+#: .\portfolio\models.py:117
+msgid "Course language Arabic"
+msgstr "لغة الكورس بالغة العربيه"
 
-#: .\portfolio\templates\home.html:38
-msgid "Some Of My Skills"
-msgstr "بعض المهارات الخاصة بي"
+#: .\portfolio\models.py:118
+msgid "Course Description"
+msgstr "وصف الكورس باللغة الانجليزية"
 
-#: .\portfolio\templates\home.html:51
-msgid "About me"
-msgstr "نبذة عني"
+#: .\portfolio\models.py:119
+msgid "Started At"
+msgstr "ابتدأ في"
 
-#: .\portfolio\templates\home.html:64 .\portfolio\templates\home.html:66
-msgid "My Cv"
-msgstr "سيرتي الزاتية"
+#: .\portfolio\models.py:120
+msgid "Ended At"
+msgstr "انتهي في"
 
-#: .\portfolio\templates\home.html:84 .\templates\snippets\navbar.html:13
-#: .\templates\snippets\navbar.html:43
-msgid "Services"
-msgstr "الخدمات"
+#: .\portfolio\models.py:121 .\portfolio\templates\cart_pages\cart.html:88
+msgid "Course price"
+msgstr "سعر الكورس"
 
-#: .\portfolio\templates\home.html:153 .\templates\snippets\navbar.html:14
-msgid "My Projects"
-msgstr "مشاريعي"
+#: .\portfolio\models.py:122
+msgid "Course Discount for Price"
+msgstr "الخصم الخاص بالكورس"
 
-#: .\portfolio\templates\home.html:255 .\templates\snippets\navbar.html:15
-msgid "My Certifications"
-msgstr "شهاداتي"
+#: .\portfolio\models.py:123
+msgid "Course Price After Discount"
+msgstr "سعر الكورس بعد الخصم"
 
-#: .\portfolio\templates\home.html:289
-msgid "Send Message Us"
-msgstr "راسلنا"
+#: .\portfolio\models.py:129 .\templates\snippets\navbar.html:10
+msgid "Courses"
+msgstr "الكورسات"
 
-#: .\portfolio\templates\home.html:308
-msgid "Subject"
-msgstr "الموضوع"
+#: .\portfolio\models.py:135 .\portfolio\models.py:152
+#: .\portfolio\models.py:166 .\portfolio\models.py:176
+#: .\portfolio\models.py:187 .\portfolio\models.py:200
+#: .\portfolio\templates\cart_pages\add_to_cart.html:50
+#: .\portfolio\templates\course_pages\one_course.html:181
+msgid "course"
+msgstr "كورس"
 
-#: .\portfolio\templates\home.html:313
-msgid "Message"
-msgstr "الرسالة"
+#: .\portfolio\models.py:136
+msgid "Course Video Title"
+msgstr "عنوان فيديو الكورس باللغة الانجليزية"
 
-#: .\portfolio\templates\home.html:317
-msgid "Send Message"
-msgstr "ارسال الرسالة"
+#: .\portfolio\models.py:137
+msgid "Course Video Title Arabic"
+msgstr "عنوان فيديو الكورس باللغة العربيه"
 
-#: .\portfolio\templates\home.html:326
-msgid "Get in Touch"
-msgstr "تواصل معنا"
+#: .\portfolio\models.py:138
+msgid "Course Video Description"
+msgstr "وصف فيديو الكورس باللغة الانجليزية"
 
-#: .\portfolio\templates\project-details.html:6
-#: .\portfolio\templates\project-details.html:8
-#: .\portfolio\templates\project-details.html:19
-#: .\portfolio\templates\project-details.html:21
-msgid "Details"
-msgstr "تفاصيل"
+#: .\portfolio\models.py:139
+msgid "Course Video Description Arabic"
+msgstr "وصف فيديو الكورس باللغة العربية"
 
-#: .\portfolio\templates\project-details.html:40
-#: .\portfolio\templates\project-details.html:42
-msgid "info"
-msgstr "معلومات"
+#: .\portfolio\models.py:140
+msgid "poster"
+msgstr "بوستر"
 
-#: .\portfolio\templates\project-details.html:47
-#: .\portfolio\templates\project-details.html:50
-msgid "Category"
-msgstr "القسم  "
+#: .\portfolio\models.py:141
+msgid "Video"
+msgstr "فيديو"
 
-#: .\portfolio\templates\project-details.html:48
-#: .\portfolio\templates\project-details.html:51
-msgid "Client"
-msgstr "اسم العميل"
+#: .\portfolio\models.py:142
+msgid "Video Duration in Minutes ?"
+msgstr "مدة الفيديو بالدقائق ؟"
 
-#: .\portfolio\templates\project-details.html:53
-msgid "Project date"
-msgstr "تاريخ المشروع"
+#: .\portfolio\models.py:143
+msgid "Video Number ?"
+msgstr "رقم الفيديو"
 
-#: .\portfolio\templates\project-details.html:54
-msgid "Project URL"
-msgstr "رابط المشروع"
+#: .\portfolio\models.py:146
+msgid "Courses Videos"
+msgstr "الفيديوهات الخاصة بالكورسات"
 
-#: .\project\settings.py:94
+#: .\portfolio\models.py:153
+msgid "Course Lectures Title"
+msgstr "عنوان المحاضرات الخاصة بالكورس باللغة الانجليزية"
+
+#: .\portfolio\models.py:154
+msgid "Course Lectures Title Arabic"
+msgstr "عنوان المحاضرات الخاصة بالكورس باللغة العربية"
+
+#: .\portfolio\models.py:155
+msgid "Course Lectures Description"
+msgstr "وصف المحاضرات الخاصة بالكورس باللغة الانجليزية"
+
+#: .\portfolio\models.py:156
+msgid "Course Lectures Description Arabic"
+msgstr "وصف المحاضرات الخاصة بالكورس باللغة العربية"
+
+#: .\portfolio\models.py:157
+msgid "content in pdf"
+msgstr "محتوي الكورس بصيغة البي دي اف"
+
+#: .\portfolio\models.py:158
+msgid "Content number ?"
+msgstr "رقم المحتوي"
+
+#: .\portfolio\models.py:160
+msgid "Courses Lectures"
+msgstr "محاضرات الكورس"
+
+#: .\portfolio\models.py:167 .\portfolio\models.py:177
+msgid "Course Benefit item"
+msgstr "الاستفادة"
+
+#: .\portfolio\models.py:170
+msgid "Courses Benefits"
+msgstr "الاستفادات الاتيه من الكورس"
+
+#: .\portfolio\models.py:180
+msgid "Course Requirements"
+msgstr "متطلبات الكورس"
+
+#: .\portfolio\models.py:188
+msgid "date published"
+msgstr "تاريخ النشر"
+
+#: .\portfolio\models.py:189
+msgid "User"
+msgstr "المستخدم"
+
+#: .\portfolio\models.py:190
+msgid "Comment"
+msgstr "التعليق"
+
+#: .\portfolio\models.py:191
+msgid "Rating"
+msgstr "المعدل"
+
+#: .\portfolio\models.py:194
+msgid "Course Reviews"
+msgstr "تقيمات الكورس"
+
+#: .\portfolio\models.py:201
+msgid "task"
+msgstr "المهمة"
+
+#: .\portfolio\models.py:202
+msgid "task number ?"
+msgstr "رقم المهمة"
+
+#: .\portfolio\models.py:204
+msgid "Course Homework"
+msgstr "واجبات الكورس"
+
+#: .\portfolio\models.py:210 .\portfolio\templates\student_pages\login.html:61
+#: .\portfolio\templates\student_pages\login.html:100
+#: .\portfolio\templates\student_pages\signup.html:48
+#: .\portfolio\templates\student_pages\signup.html:49
+#: .\portfolio\templates\student_pages\signup.html:94
+#: .\portfolio\templates\student_pages\signup.html:95
+msgid "username"
+msgstr "اسم المستخدم"
+
+#: .\portfolio\models.py:211
+msgid "full_name"
+msgstr "الاسم بالكامل"
+
+#: .\portfolio\models.py:215
+msgid "join_on"
+msgstr "انضم في"
+
+#: .\portfolio\models.py:217
+msgid "Students"
+msgstr "الطلاب"
+
+#: .\portfolio\templates\cart_pages\add_to_cart.html:3
+#: .\portfolio\templates\course_pages\one_course.html:215
+msgid "Add To Cart"
+msgstr "اضف الي الحقيبة"
+
+#: .\portfolio\templates\cart_pages\cart.html:3
+#: .\portfolio\templates\course_pages\courses.html:3
+#: .\portfolio\templates\course_pages\one_course.html:3
+#: .\portfolio\templates\home_pages\home.html:3
+#: .\portfolio\templates\payment_pages\paypalrequest.html:3
+#: .\project\settings.py:117
 msgid "Karim Aboelazm"
 msgstr "كريم ابوالعزم"
 
-#: .\project\settings.py:118
+#: .\portfolio\templates\cart_pages\cart.html:76
+msgid "all courses"
+msgstr "الكورسات"
+
+#: .\portfolio\templates\cart_pages\cart.html:87
+msgid "Course name"
+msgstr " اسم الكورس"
+
+#: .\portfolio\templates\cart_pages\cart.html:89
+msgid "Remove Course"
+msgstr "حذف الكورس"
+
+#: .\portfolio\templates\cart_pages\cart.html:98
+msgid "There are no courses in your cart"
+msgstr "لا يوجد كورسات داخل الحقيبة"
+
+#: .\portfolio\templates\cart_pages\cart.html:104
+msgid "Cart Total"
+msgstr "اجمالي السعر"
+
+#: .\portfolio\templates\cart_pages\cart.html:113
+msgid "Check Out"
+msgstr "ادفع الان"
+
+#: .\portfolio\templates\cart_pages\cart.html:116
+msgid "Empty Cart"
+msgstr "افرغ الحقيبة"
+
+#: .\portfolio\templates\cart_pages\check_out.html:3
+msgid "Check out"
+msgstr "ادفع الان"
+
+#: .\portfolio\templates\cart_pages\check_out.html:80
+msgid "Checkout Now"
+msgstr "ادفع الان"
+
+#: .\portfolio\templates\cart_pages\check_out.html:83
+#: .\portfolio\templates\cart_pages\check_out.html:84
+msgid "First Name"
+msgstr "الاسم الاول"
+
+#: .\portfolio\templates\cart_pages\check_out.html:87
+#: .\portfolio\templates\cart_pages\check_out.html:88
+msgid "Last Name"
+msgstr "اسم العائلة"
+
+#: .\portfolio\templates\cart_pages\check_out.html:91
+#: .\portfolio\templates\cart_pages\check_out.html:92
+msgid "Email Address"
+msgstr "عنوان بريد الكتروني"
+
+#: .\portfolio\templates\cart_pages\check_out.html:95
+#: .\portfolio\templates\cart_pages\check_out.html:96
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: .\portfolio\templates\cart_pages\check_out.html:100
+msgid "Order Summary"
+msgstr "ملخص الطلب"
+
+#: .\portfolio\templates\cart_pages\check_out.html:107
+msgid "SN"
+msgstr "رقم"
+
+#: .\portfolio\templates\cart_pages\check_out.html:108
+#: .\portfolio\templates\home_pages\home.html:25
+#: .\portfolio\templates\home_pages\home.html:29
+#: .\portfolio\templates\home_pages\home.html:280
+msgid "Name"
+msgstr "الاسم"
+
+#: .\portfolio\templates\cart_pages\check_out.html:109
+msgid "Price"
+msgstr "السعر"
+
+#: .\portfolio\templates\cart_pages\check_out.html:125
+msgid "Grand Total"
+msgstr "اجمالي السعر"
+
+#: .\portfolio\templates\cart_pages\check_out.html:131
+msgid "Your cart is empty"
+msgstr "الحقيبة الخاصة بك فارغة"
+
+#: .\portfolio\templates\course_pages\courses.html:13
+msgid "Our Courses"
+msgstr "كورساتنا"
+
+#: .\portfolio\templates\course_pages\one_course.html:15
+msgid "Course Details"
+msgstr "تفاصيل الكورس"
+
+#: .\portfolio\templates\course_pages\one_course.html:124
+#: .\portfolio\templates\order_pages\order_content.html:13
+msgid " Course Details"
+msgstr "تفاصيل الكورس"
+
+#: .\portfolio\templates\course_pages\one_course.html:193
+msgid "Requirements"
+msgstr "متطلبات الكورس"
+
+#: .\portfolio\templates\course_pages\one_course.html:193
+msgid "This Course for beginners"
+msgstr "هذا الكورس خاص بالمبتدئين"
+
+#: .\portfolio\templates\course_pages\one_course.html:197
+msgid "Old Price"
+msgstr "السعر قبل الخصم"
+
+#: .\portfolio\templates\course_pages\one_course.html:198
+msgid "New Price"
+msgstr "السعر بعد الخصم"
+
+#: .\portfolio\templates\course_pages\one_course.html:200
+#: .\portfolio\templates\course_pages\one_course.html:203
+msgid "Course Price"
+msgstr "سعر الكورس"
+
+#: .\portfolio\templates\course_pages\one_course.html:200
+msgid "Free"
+msgstr "مجانا"
+
+#: .\portfolio\templates\course_pages\one_course.html:205
+msgid "Created at"
+msgstr "ابتدأ في"
+
+#: .\portfolio\templates\course_pages\one_course.html:205
+#: .\portfolio\templates\student_pages\profile.html:93
+msgid "ago"
+msgstr "منذ"
+
+#: .\portfolio\templates\course_pages\one_course.html:206
+msgid "Created by"
+msgstr "تم انشائه بواسطه "
+
+#: .\portfolio\templates\course_pages\one_course.html:206
+msgid "Eng Karim Mohammed Aboelazm"
+msgstr "المهندس كريم ابوالعزم"
+
+#: .\portfolio\templates\course_pages\one_course.html:210
+msgid "You had paid this course"
+msgstr "لقد دفعت هذه الدورة"
+
+#: .\portfolio\templates\course_pages\one_course.html:211
+msgid "check your profile"
+msgstr "تحقق من ملفك الشخصي"
+
+#: .\portfolio\templates\home_pages\home.html:26
+#: .\portfolio\templates\home_pages\home.html:30
+#: .\portfolio\templates\student_pages\profile.html:4
+#: .\templates\snippets\navbar.html:26 .\templates\snippets\navbar.html:33
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: .\portfolio\templates\home_pages\home.html:27
+#: .\portfolio\templates\home_pages\home.html:285
+#: .\portfolio\templates\student_pages\profile.html:24
+#: .\portfolio\templates\student_pages\signup.html:60
+#: .\portfolio\templates\student_pages\signup.html:61
+#: .\portfolio\templates\student_pages\signup.html:106
+#: .\portfolio\templates\student_pages\signup.html:107
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#: .\portfolio\templates\home_pages\home.html:33
+#: .\portfolio\templates\student_pages\profile.html:25
+msgid "Phone"
+msgstr "رقم الهاتف"
+
+#: .\portfolio\templates\home_pages\home.html:57
+msgid "About me"
+msgstr "نبذة عني"
+
+#: .\portfolio\templates\home_pages\home.html:103
+msgid "Services"
+msgstr "الخدمات"
+
+#: .\portfolio\templates\home_pages\home.html:172
+msgid "My Projects"
+msgstr "مشاريعي"
+
+#: .\portfolio\templates\home_pages\home.html:237
+msgid "My Certifications"
+msgstr "شهاداتي"
+
+#: .\portfolio\templates\home_pages\home.html:271
+msgid "Send Message Us"
+msgstr "راسلنا"
+
+#: .\portfolio\templates\home_pages\home.html:290
+msgid "Subject"
+msgstr "الموضوع"
+
+#: .\portfolio\templates\home_pages\home.html:295
+msgid "Message"
+msgstr "الرسالة"
+
+#: .\portfolio\templates\home_pages\home.html:299
+msgid "Send Message"
+msgstr "ارسال الرسالة"
+
+#: .\portfolio\templates\home_pages\home.html:308
+msgid "Get in Touch"
+msgstr "تواصل معنا"
+
+#: .\portfolio\templates\order_pages\order_content.html:3
+msgid "Orders"
+msgstr "الكورسات المطلوبة"
+
+#: .\portfolio\templates\project_pages\project-details.html:6
+#: .\portfolio\templates\project_pages\project-details.html:8
+#: .\portfolio\templates\project_pages\project-details.html:19
+#: .\portfolio\templates\project_pages\project-details.html:21
+msgid "Details"
+msgstr "تفاصيل"
+
+#: .\portfolio\templates\project_pages\project-details.html:40
+#: .\portfolio\templates\project_pages\project-details.html:42
+msgid "info"
+msgstr "معلومات"
+
+#: .\portfolio\templates\project_pages\project-details.html:47
+#: .\portfolio\templates\project_pages\project-details.html:50
+msgid "Category"
+msgstr "القسم"
+
+#: .\portfolio\templates\project_pages\project-details.html:48
+#: .\portfolio\templates\project_pages\project-details.html:51
+msgid "Client"
+msgstr "اسم العميل"
+
+#: .\portfolio\templates\project_pages\project-details.html:53
+msgid "Project date"
+msgstr "تاريخ المشروع"
+
+#: .\portfolio\templates\project_pages\project-details.html:54
+msgid "Project URL"
+msgstr "رابط المشروع"
+
+#: .\portfolio\templates\student_pages\change_password.html:6
+msgid "Change Password"
+msgstr "تغير كلمة المرور"
+
+#: .\portfolio\templates\student_pages\change_password.html:17
+#: .\portfolio\templates\student_pages\edit_profile.html:17
+#: .\portfolio\templates\student_pages\reset_password.html:16
+msgid "Save"
+msgstr "احفظ"
+
+#: .\portfolio\templates\student_pages\edit_profile.html:6
+msgid "Edit Profile"
+msgstr "تعديل الملف الشخصي"
+
+#: .\portfolio\templates\student_pages\forgot_password.html:4
+msgid "Forgot Password"
+msgstr "نسيت كلمة المرور"
+
+#: .\portfolio\templates\student_pages\forgot_password.html:11
+msgid "Reset your Password"
+msgstr "اعادة كلمة المرور الخلصة بك"
+
+#: .\portfolio\templates\student_pages\forgot_password.html:21
+msgid "Email address"
+msgstr "عنوان بريد الكتروني"
+
+#: .\portfolio\templates\student_pages\forgot_password.html:22
+msgid "Enter Your Email Address"
+msgstr "ادخل بريدك الالكتروني"
+
+#: .\portfolio\templates\student_pages\forgot_password.html:24
+msgid "Get Reset Link"
+msgstr "استعادة كلمة المرور"
+
+#: .\portfolio\templates\student_pages\login.html:11
+msgid "Please login to see this page."
+msgstr "من فضلك قم بتسجيل الدخول لمعرفة محتوي هذه الصفحة"
+
+#: .\portfolio\templates\student_pages\login.html:54
+#: .\portfolio\templates\student_pages\login.html:93
+msgid "Sign into your account"
+msgstr "سجل الدخول الي حسابك"
+
+#: .\portfolio\templates\student_pages\login.html:60
+#: .\portfolio\templates\student_pages\login.html:99
+msgid "Your Name"
+msgstr "اسمك"
+
+#: .\portfolio\templates\student_pages\login.html:66
+#: .\portfolio\templates\student_pages\login.html:105
+msgid "Your Email"
+msgstr "بريدك الالكتروني"
+
+#: .\portfolio\templates\student_pages\login.html:67
+#: .\portfolio\templates\student_pages\login.html:106
+#: .\portfolio\templates\student_pages\signup.html:66
+#: .\portfolio\templates\student_pages\signup.html:67
+#: .\portfolio\templates\student_pages\signup.html:112
+#: .\portfolio\templates\student_pages\signup.html:113
+msgid "password"
+msgstr "كلمة المرور"
+
+#: .\portfolio\templates\student_pages\login.html:73
+#: .\portfolio\templates\student_pages\login.html:112
+msgid "Your username and password didn't match. Please try again."
+msgstr "يوجد خطأ في كلمة المرور حاول مرة اخري"
+
+#: .\portfolio\templates\student_pages\login.html:76
+#: .\portfolio\templates\student_pages\login.html:115
+#: .\portfolio\templates\student_pages\signup.html:79
+#: .\portfolio\templates\student_pages\signup.html:125
+#: .\templates\snippets\navbar.html:60
+msgid "Login"
+msgstr "تسجبل الدخول"
+
+#: .\portfolio\templates\student_pages\login.html:80
+msgid "Forgot Password ?  "
+msgstr " نسيت كلمة المرور "
+
+#: .\portfolio\templates\student_pages\login.html:80
+#: .\portfolio\templates\student_pages\login.html:119
+msgid "Reset Now"
+msgstr " اعادة كلمة المرور "
+
+#: .\portfolio\templates\student_pages\login.html:81
+#: .\portfolio\templates\student_pages\login.html:120
+msgid "Don't have an account?"
+msgstr "ليس لديك حساب"
+
+#: .\portfolio\templates\student_pages\login.html:81
+#: .\portfolio\templates\student_pages\login.html:120
+msgid "Register here"
+msgstr "سجل الان"
+
+#: .\portfolio\templates\student_pages\login.html:82
+#: .\portfolio\templates\student_pages\login.html:121
+msgid "Terms of use."
+msgstr "شروط الاستخدام."
+
+#: .\portfolio\templates\student_pages\login.html:83
+#: .\portfolio\templates\student_pages\login.html:122
+msgid "Privacy policy"
+msgstr "سياسة الخصوصية"
+
+#: .\portfolio\templates\student_pages\login.html:119
+msgid "Forgot Password ?"
+msgstr " نسيت كلمة المرور"
+
+#: .\portfolio\templates\student_pages\profile.html:14
+msgid "Personal Info"
+msgstr "المعلومات الشخصية"
+
+#: .\portfolio\templates\student_pages\profile.html:17
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: .\portfolio\templates\student_pages\profile.html:18
+#: .\portfolio\templates\student_pages\signup.html:54
+#: .\portfolio\templates\student_pages\signup.html:55
+#: .\portfolio\templates\student_pages\signup.html:100
+#: .\portfolio\templates\student_pages\signup.html:101
+msgid "Full Name"
+msgstr "الاسم بالكامل"
+
+#: .\portfolio\templates\student_pages\profile.html:20
+#: .\portfolio\templates\student_pages\profile.html:22
+msgid "Proffession"
+msgstr "المهنة"
+
+#: .\portfolio\templates\student_pages\profile.html:20
+msgid "Student"
+msgstr "الطالب"
+
+#: .\portfolio\templates\student_pages\profile.html:26
+#: .\portfolio\templates\student_pages\signup.html:72
+#: .\portfolio\templates\student_pages\signup.html:73
+#: .\portfolio\templates\student_pages\signup.html:118
+#: .\portfolio\templates\student_pages\signup.html:119
+msgid "Address"
+msgstr "العنوان"
+
+#: .\portfolio\templates\student_pages\profile.html:28
+#: .\portfolio\templates\student_pages\profile.html:30
+msgid "Joined On"
+msgstr "انضم في"
+
+#: .\portfolio\templates\student_pages\profile.html:46
+#: .\portfolio\templates\student_pages\profile.html:80
+msgid "My Courses"
+msgstr "الكورسات الخاصه بي"
+
+#: .\portfolio\templates\student_pages\profile.html:72
+#: .\portfolio\templates\student_pages\profile.html:106
+msgid "Opps !"
+msgstr "أوبس !"
+
+#: .\portfolio\templates\student_pages\profile.html:73
+msgid "You have no courses yet ! "
+msgstr "ليس لديك كورسات حتى الآن! "
+
+#: .\portfolio\templates\student_pages\profile.html:93
+msgid "Last updated"
+msgstr "آخر تحديث"
+
+#: .\portfolio\templates\student_pages\profile.html:98
+msgid "Go To Course"
+msgstr "اذهب الي الكورس"
+
+#: .\portfolio\templates\student_pages\profile.html:107
+msgid "You have no courses yet !"
+msgstr "ليس لديك كورسات حتى الآن! "
+
+#: .\portfolio\templates\student_pages\profile.html:119
+msgid "Welcome, new user. Please log in."
+msgstr "مرحبا بك أيها المستخدم الجديد. يرجى تسجيل الدخول."
+
+#: .\portfolio\templates\student_pages\reset_password.html:5
+msgid "Reset Password "
+msgstr "اعادة كلمة المرور"
+
+#: .\portfolio\templates\student_pages\reset_password.html:12
+msgid "New Password"
+msgstr "كلمةالمرور الجديدة"
+
+#: .\portfolio\templates\student_pages\signup.html:78
+#: .\portfolio\templates\student_pages\signup.html:124
+msgid "Sign up"
+msgstr "تسجيل الدخول"
+
+#: .\portfolio\templates\student_pages\signup.html:79
+#: .\portfolio\templates\student_pages\signup.html:125
+msgid "If you've an account?"
+msgstr "اذا كان لديك حساب؟"
+
+#: .\project\settings.py:141
 msgid "Welcome to My Portfolio"
 msgstr "مرحبا بك في الملف سيرتي الزاتية"
 
-#: .\templates\snippets\navbar.html:6
+#: .\templates\snippets\navbar.html:5
 msgid "Aboelazm"
 msgstr "ابوالعزم"
 
-#: .\templates\snippets\navbar.html:11 .\templates\snippets\navbar.html:41
-msgid "Home"
-msgstr "الرئيسية"
+#: .\templates\snippets\navbar.html:9
+msgid "My Portfolio"
+msgstr "ملفي الشخصي"
 
-#: .\templates\snippets\navbar.html:12 .\templates\snippets\navbar.html:42
-msgid "About"
-msgstr "نبذة عني"
+#: .\templates\snippets\navbar.html:27 .\templates\snippets\navbar.html:34
+msgid "Settings"
+msgstr "الضبط"
 
-#: .\templates\snippets\navbar.html:16 .\templates\snippets\navbar.html:46
-msgid "Contact"
-msgstr "التواصل"
+#: .\templates\snippets\navbar.html:28 .\templates\snippets\navbar.html:35
+msgid "Change password"
+msgstr "تغير كلمة المرور"
 
-#: .\templates\snippets\navbar.html:17 .\templates\snippets\navbar.html:47
-msgid "Languages"
-msgstr "اللغات"
+#: .\templates\snippets\navbar.html:29 .\templates\snippets\navbar.html:36
+msgid "Logout"
+msgstr "تسجيل الخروج"
 
-#: .\templates\snippets\navbar.html:26 .\templates\snippets\navbar.html:56
-msgid "Arabic"
-msgstr "العربية"
+#: .\templates\snippets\navbar.html:54
+msgid "Register"
+msgstr "مستخدم جديد"
 
-#: .\templates\snippets\navbar.html:36 .\templates\snippets\navbar.html:66
-msgid "English"
-msgstr "الانجليزية"
+#~ msgid "Home"
+#~ msgstr "الرئيسية"
 
-#: .\templates\snippets\navbar.html:44
-msgid "Work"
-msgstr "اعمالي"
+#~ msgid "About"
+#~ msgstr "نبذة عني"
 
-#: .\templates\snippets\navbar.html:45
-msgid "Blog"
-msgstr "مقالات"
+#~ msgid "Contact"
+#~ msgstr "التواصل"
 
-#~ msgid "Your Name"
-#~ msgstr "اسمك"
+#~ msgid "Languages"
+#~ msgstr "اللغات"
 
-#~ msgid "Your Email"
-#~ msgstr "بريدك الالكتروني"
+#~ msgid "Arabic"
+#~ msgstr "العربية"
+
+#~ msgid "English"
+#~ msgstr "الانجليزية"
+
+#~ msgid "Some Of My Skills"
+#~ msgstr "بعض المهارات الخاصة بي"
+
+#~ msgid "My Cv"
+#~ msgstr "سيرتي الزاتية"
+
+#~ msgid "Work"
+#~ msgstr "اعمالي"
+
+#~ msgid "Blog"
+#~ msgstr "مقالات"
 
 #~ msgid "Skill"
 #~ msgstr "مهارات"

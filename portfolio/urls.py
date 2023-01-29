@@ -28,7 +28,8 @@ urlpatterns = [
     
     # payments methods with esewa url
     path('credit-card-request/',CreditCardRequestView.as_view(), name="credit_card_request"),
-    path('order-had-finished/',OrderHadFinishedView.as_view(),name="order_had_finished"),
-    path('chatbot/', ChatbotView.as_view(), name='chatbot')
+    path('course-<int:pk>-had-payment-by-username-<str:usr>-paidwithpaypalAndPaymentStatusIsCompleted/',OrderHadFinishedView.as_view(),name="order_had_finished"),
+    
+    
 ]
    

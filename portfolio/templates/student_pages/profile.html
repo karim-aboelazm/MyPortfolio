@@ -39,6 +39,79 @@
       </div>
     </div>
   </div>
+  {% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' %}
+<div class="row card p-5 mt-5">
+    <h1 class="text-center mb-5">
+      {% trans 'My Courses' %}
+    </h1>
+    {% if student_courses %}
+      {% for pc in student_courses  %}
+        <div class="col-md-12 mx-auto card mb-3 px-0">
+          <div class="row g-0 mx-0">
+            <div class="col-sm-2 card p-5" style="border-radius:0;">
+              <img src="{{pc.poster.url}}" style="width: 100%;" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-7 p-0">
+              <div class="p-3">
+                <h5 class="card-title">{{pc.title}}</h5>
+                <p class="card-text" style="text-align: justify;">{{pc.description|slice:"0:150"}} ...</p>
+                <p class="card-text"><small class="text-muted">Last updated {{pc.started_at|timesince}} ago</small></p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <a href="{% url 'porto:order_had_finished' pc.id request.user.first_name %}" class="btn btn-lg btn-dark pb-5" style="width:100%;height:100%;border-radius:0; text-align: center;">
+                <span style="position: relative;top: 50%;transform: translateY(-50%);"><i class="fas fa-running mx-2"></i> Go To Course</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+        <div class="col-md-12 mt-5">
+            <h1 class="text-center">{% trans 'Opps !' %}</h1>
+            <h3 class="text-center">{% trans 'You have no courses yet ! ' %} &#128549;</h3>
+        </div>
+    {% endif %}    
+  </div>
+{% else %}
+<div class="row card p-5 mt-5">
+    <h1 class="text-center mb-5">
+      {% trans 'My Courses' %}
+    </h1>
+    {% if student_courses %}
+      {% for pc in student_courses  %}
+        <div class="col-md-12 mx-auto card mb-3 px-0">
+          <div class="row g-0 mx-0">
+            <div class="col-sm-2 card p-5" style="border-radius:0;">
+              <img src="{{pc.poster.url}}" style="width: 100%;" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-7 p-0">
+              <div class="p-3">
+                <h5 class="card-title">{{pc.title_ar}}</h5>
+                <p class="card-text" style="text-align: justify;">{{pc.description_ar|slice:"0:150"}} ...</p>
+                <p class="card-text"><small class="text-muted"> {% trans 'Last updated' %}  {% trans 'ago' %} {{pc.started_at|timesince}} </small></p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <a href="{% url 'porto:order_had_finished' pc.id request.user.first_name %}" class="btn btn-lg btn-dark pb-5" style="width:100%;height:100%;border-radius:0; text-align: center;">
+                <span style="position: relative;top: 50%;transform: translateY(-50%);"> {% trans 'Go To Course' %} <i class="fas fa-running mx-2"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+        <div class="col-md-12 mt-5">
+            <h1 class="text-center">{% trans 'Opps !' %}</h1>
+            <h3 class="text-center">{% trans 'You have no courses yet !' %} &#128549;</h3>
+        </div>
+    {% endif %}
+    
+      
+  </div>
+{% endif %}
+  
 </div>
 
 {% endblock content %}

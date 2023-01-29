@@ -3,356 +3,8 @@
 {% block title %}{% trans "Karim Aboelazm" %}{% endblock %}
 {% block content %}
 {% include "snippets/info2.html" %}
-
-<!-- <div class="container bg-gray">
-    <div class="row my-5 card-blog bg-white rounded p-5">
-        <h2 class="text-center">{{course.title}} Course Details</h2> 
-        <div class="col-md-4 p-5">
-            {% if course.poster %}
-                <img src="{{course.poster.url}}" style="width:100%;height:400px" alt="" srcset="">  
-            {% else %}
-                <img src="{% static 'img/course_default.png' %}" alt="" srcset="">  
-            {% endif %}
-        </div>
-        <div class="col-md-8">
-            <ul>
-                <li class="my-3"><strong>Course Title</strong> : <span>{{course.title}}</span></li>
-                <hr>
-                <li class="my-3"><strong>Course Description</strong> : <span>{{course.description}}</span></li>
-                <hr>
-                <li class="my-3"><strong>Course Language</strong> : <span>{{course.language}}</span></li>
-                <hr>
-                {% if course.discount > 0 %}
-                    {% if course.price > 0 %}
-                        <li class="my-3"><strong>Course Price</strong> : <span> <del class="mx-2"> $ {{course.price}}  </del>   -    $ {{course.price_after_discount}}</span></li>
-                    {% else %}
-                        <li class="my-3"><strong>Course Price</strong> : <span> Free </span></li>
-                    {% endif %}
-                {% else %}
-                    <li class="my-3"><strong>Course Price</strong> : <span> $ {{course.price}}</span></li>
-                {% endif %}
-                <hr>   
-                <li class="my-3"><strong>Course Started At</strong> : <span>{{course.started_at|timesince}} ago</span></li>
-                <hr>
-                <li class="my-3"><strong>Course Instructor </strong> : <span>Eng : Karim Mohammed Aboelazm</span></li>
-                <hr>
-                {% comment %} <a href="{% url 'porto:course-payment' course.id %}" class="btn btn-lg text-white bg-dark"> Join Now</a> {% endcomment %}
-                 
-                <form method="post">
-                    {% csrf_token %}
-                    
-                    <div id="paypal-button-container"></div>
-
-                  
-                    <script src="https://www.paypal.com/sdk/js?client-id=Ad69nFR6Pq1Ax0h1BbCaI_RuxYprCgN_76ilvHa6Z-Z9k-mRoVjQY_jbKInGetH7cNRbsC8r1v66dn3H&currency=USD&disable-funding=credit"></script>
-
-                    <script>
-                        var total = '{{course.price_after_discount}}';
-                        // Render the PayPal button into #paypal-button-container
-                        paypal.Buttons({
-                            style:{
-                                color:'black',
-                                shape:'rect'
-                            },
-
-                            // Set up the transaction  
-                            createOrder: function(data, actions) {
-                                return actions.order.create({
-                                    purchase_units: [{
-                                        amount: {
-                                            value: parseFloat(total).toFixed(2)
-                                        }
-                                    }]
-                                });
-                            },
-
-                            // Finalize the transaction
-                            onApprove: function(data, actions) {
-                                return actions.order.capture().then(function(orderData) {
-                                    // Successful capture! For demo purposes:
-                                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                                    var transaction = orderData.purchase_units[0].payments.captures[0];
-                                    alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-
-                                    // Replace the above to show a success message within this page, e.g.
-                                    const element = document.getElementById('paypal-button-container');
-                                    element.innerHTML = '';
-                                    element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                                    // Or go to another URL:  actions.redirect('thank_you.html');
-                                });
-                            }
-
-
-                        }).render('#paypal-button-container');
-                    </script>
-                </form>
-            </ul>
-        </div>
-    </div>
-    <div class="row my-5 card-blog bg-white p-5">
-        <div class="col-md-12">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="benefits-tab" data-bs-toggle="tab" data-bs-target="#benefits" type="button" role="tab" aria-controls="benefits" aria-selected="true">Course Benefits</button>
-                </li>
-                
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="content-tab" data-bs-toggle="tab" data-bs-target="#content" type="button" role="tab" aria-controls="content" aria-selected="false">Course Content</button>
-                </li>
-                
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes" type="button" role="tab" aria-controls="notes" aria-selected="false">Course Notes</button>
-                </li>
-
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="tasks-tab" data-bs-toggle="tab" data-bs-target="#tasks" type="button" role="tab" aria-controls="tasks" aria-selected="false">Course Tasks</button>
-                </li>
-                
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Course Reviews</button>
-                </li>
-
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="benefits" role="tabpanel" aria-labelledby="benefits-tab">
-                    <div class="container mt-5">
-                        <div class="row">
-                            <div class="col-md-12 mb-5">
-                                <h3 class="text-left">{{course.title}} Course Benefits</h3>
-                            </div>
-                        </div>
-                        <div class="row mx-auto row-cols-1 row-cols-md-2 g-4">
-                            {% if course.course_benefits_set.all %}
-                                {% for ben in course.course_benefits_set.all  %}
-                                    <div class="col">
-                                        <h4><i class="fa fa-check-double mx-3" style="position: relative; top:2px;font-size:18px"></i>{{ben.benefit}}</h4>
-                                    </div>
-                                {% endfor %}
-                            {% else %}
-                                <div class="col-md-8 mx-auto">
-                                    <h1 class="text-center">Opps !</h1>
-                                    <h3 class="text-center">There is no benefits yet ! &#128549;</h3>
-                                </div>
-                            {% endif %}  
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tab-pane fade" id="content" role="tabpanel" aria-labelledby="content-tab">
-                    <div class="container mt-5">
-                        <div class="row">
-                            <div class="col-md-12 mb-5">
-                                <h3 class="text-left">{{course.title}} Course Videos</h3>
-                            </div>
-                        </div>
-                        <div class="row mx-auto row-cols-1 row-cols-md-2 g-4">
-                            {% if course.courses_videos_set.all %}
-                                {% for video in course.courses_videos_set.all  %}
-                                    <div class="col">
-                                        <div class="card mb-3">
-                                            <div class="row g-0">
-                                                <div class="col-md-4 p-2">
-                                                    <button type="button" class="col-md-12  text-center" style="background:none;border:none" data-toggle="modal" data-target="#exampleModal">
-                                                        <span id="boot-icon" class="bi bi-play" style="font-size:3.5rem;"></span>
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="card-body">
-                                                        <h3 class="card-title text-center">{{video.title}}</h3>
-                                                        {% if video.video_number < 10 %}
-                                                        <h5 class="text-muted text-center">Video Number : 0{{video.video_number}}</h5>
-                                                        {% else %}
-                                                        <h5 class="text-muted text-center">Video Number : {{video.video_number}}</h5>
-                                                        {% endif %}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                    <div class="row modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog"  role="document">
-                                            <div class="modal-content bg-dark pb-2 px-2" >
-                                            <div class="bg-dark">
-                                                <button type="button" class="close text-white" style="border:none;background:none; " data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true" style="font-size:25px;">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="">
-                                                <video src="{{video.video.url}}" poster="{{course.poster.url}}" class="card-img-top w-100" controls controlsList="nodownload" style="width:100%;"></video>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            {% else %}
-                                <div class="col-md-8 mx-auto">
-                                    <h1 class="text-center">Opps !</h1>
-                                    <h3 class="text-center">There is no videos yet ! &#128549;</h3>
-                                </div>
-                            {% endif %}  
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">
-                    <div class="container mt-5">
-                        <div class="row">
-                            <div class="col-md-12 mb-5">
-                                <h3 class="text-left">{{course.title}} Course Notes</h3>
-                            </div>
-                        </div>
-                        {% if course.course_lectures_set.all %}
-                            {% for note in course.course_lectures_set.all  %}
-                                    <div class="row card-blog p-3">
-                                        <div class="col-md-8">
-                                            <strong>{{note.title}}</strong>
-                                        </div> 
-                                        <div class="col-md-2 text-left">
-                                            <a class="" href="{{note.content_in_pdf.url}}">
-                                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                        <div class="col-md-2 text-right">
-                                            <a class="" href="{{note.content_in_pdf.url}}" download>
-                                                <i class="fa fa-download" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                            {% endfor %}
-                        {% else %}
-                            <div class="col-md-8 mx-auto">
-                                <h1 class="text-center">Opps !</h1>
-                                <h3 class="text-center">There is no notes yet ! &#128549;</h3>
-                            </div>
-                        {% endif %}  
-                    </div>
-                </div>
-
-                <div class="tab-pane fade" id="tasks" role="tabpanel" aria-labelledby="tasks-tab">
-                    <div class="container mt-5">
-                        <div class="row">
-                            <div class="col-md-12 mb-5">
-                                <h3 class="text-left">{{course.title}} Course Tasks</h3>
-                            </div>
-                        </div>
-                        {% if course.course_homework_set.all %}
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
-                            {% for task in course.course_homework_set.all  %}
-                                <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading{{task.task_number}}">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{task.task_number}}" aria-expanded="false" aria-controls="flush-collapse{{task.task_number}}">
-                                        
-                                        {% if task.task_number < 10 %}
-                                            {{course.title}} Course Task 0{{task.task_number}}
-                                        {% else %}   
-                                            {{course.title}} Course Task {{task.task_number}}
-                                        {% endif %}
-                                            
-                                    </button>
-                                </h2>
-                                <div id="flush-collapse{{task.task_number}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{task.task_number}}" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">{{task.task}}</div>
-                                </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                        {% else %}
-                                <div class="col-md-8 mx-auto">
-                                    <h1 class="text-center">Opps !</h1>
-                                    <h3 class="text-center">There is no Tasks yet ! &#128549;</h3>
-                                </div>
-                        {% endif %}  
-                    </div>
-                </div>
-
-                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                    <div class="container mt-5">
-                        <div class="row">
-                            <div class="col-md-10 mb-5">
-                                <h3 class="text-left">{{course.title}} Course Reviews</h3>
-                            </div>
-                            <div class="col-md-2 mb-5 text-right">
-                                <button type="button" class="btn btn-lg" style="background: none; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    <i class="fa fa-plus-circle" style="font-size:30px" aria-hidden="true"></i>
-                                  </button>
-                                  
-                                  
-                                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class=" text-center" id="exampleModalLabel">New Review</h5>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                          <form method="post"  action="{% url 'porto:course-details' course.id %}" >
-                                            {% csrf_token %}
-                                            {% bootstrap_form form%}
-                                            <button class="col-md-12 btn btn-lg bg-dark text-white">Add</button>
-                                          </form>
-                                        </div>
-                                        
-                                      </div>
-                                    </div>
-                                  </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row mx-auto row-cols-1 row-cols-md-2 g-4">
-                            {% if course.course_reviews_set.all %}
-                                {% for review in course.course_reviews_set.all  %}
-                                    <div class="col">
-                                        <section id="testimonials">
-                                            <div class="testimonial-box-container">
-                                               
-                                                <div class="testimonial-box">
-                                                    
-                                                    <div class="box-top">
-                                                       
-                                                        <div class="profile">
-                                                           
-                                                            <div class="profile-img">
-                                                                <img src="{% static '' %}img/user.jpeg" />
-                                                            </div>
-                                                            
-                                                            <div class="name-user">
-                                                                <strong>{{review.user_name|title}}</strong>
-                                                                <span>@{{review.user_name|lower}}</span>
-                                                            </div>
-                                                        </div>
-                                                       
-                                                        <div class="reviews">        
-                                                            {% for item in "x"|ljust:review.rating %}
-                                                                <i class="fas fa-star"></i>
-                                                            {% endfor %}                                                            
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="client-comment">
-                                                        <p style="text-align: justify;">{{review.comment}}.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                          </section>
-                                    </div>
-                                {% endfor %}
-                            {% else %}
-                                    <div class="col-md-8 mx-auto">
-                                        <h1 class="text-center">Opps !</h1>
-                                        <h3 class="text-center">There is no reviews yet ! &#128549;</h3>
-                                    </div>
-                            {% endif %}  
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-                
-        </div>
-    </div>
-</div> -->
-
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' %}
 <main id="main">
     <section id="work" class="portfolio-mf sect-pt4 route">
         <div class="container">
@@ -360,7 +12,7 @@
                 <div class="col-sm-12">
                     <div class="title-box text-center">
                         <h3 class="title-a"> 
-                            {{course.title}} {% trans " Course Details" %}
+                            {{course.title}} {% trans "Course Details" %}
                         </h3>
                         <div class="line-mf"></div>
                     </div>
@@ -443,7 +95,17 @@
                             {% endif %}
                             <p style="text-align: justify;"><strong>Created at :</strong> <span>{{course.started_at|timesince}} ago</span></p>
                             <p style="text-align: justify;"><strong>Created by :</strong> <span>Eng Karim Mohammed Aboelazm </span></p>
+                            
+                            {% if course_had_paid == "done" %}
+                            <div class="card pt-3">
+                                <p class="text-center" style="font-size:20px">You had paid this course 
+                                    <a href="{% url 'porto:student_profile' %}"> check your profile <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                </p>
+                            </div>
+                            {% else %}
                             <a href="{% url 'porto:add_to_cart' course.id %}" class="col-md-12 btn btn-lg  mx-auto text-white bg-dark   "><i class="fa fa-cart-plus" aria-hidden="true"></i> Add To Cart</a>
+                            {% endif %}
+                                
                         </div>
                     </div>
                 </div>
@@ -451,7 +113,115 @@
         </div>
     </section>
 </main>
-
-
+{% else %}
+<main id="main">
+    <section id="work" class="portfolio-mf sect-pt4 route">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="title-box text-center">
+                        <h3 class="title-a"> 
+                             {% trans " Course Details" %} {{course.title_ar}}
+                        </h3>
+                        <div class="line-mf"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="work-box">
+                        <div class="work-img p-5">
+                            <img src="{{course.poster.url}}" alt="" class="img-fluid mx-auto" style="width:100%">
+                        </div>
+                    </div>
+                    <div class="work-box">
+                        {% if course.course_reviews_set.all %}
+                                {% for review in course.course_reviews_set.all|slice:"0:1"  %}
+                                    <section id="testimonials" style="width: 100%;">
+                                        <div class="testimonial-box-container">
+                                            
+                                            <div class="testimonial-box">
+                                                
+                                                <div class="box-top">
+                                                    
+                                                    <div class="profile">
+                                                        
+                                                        <div class="profile-img">
+                                                            <img src="{% static '' %}img/user.jpeg" />
+                                                        </div>
+                                                        
+                                                        <div class="name-user">
+                                                            <strong>{{review.user_name|title}}</strong>
+                                                            <span>@{{review.user_name|lower}}</span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="reviews">        
+                                                        {% for item in "x"|ljust:review.rating %}
+                                                            <i class="fas fa-star"></i>
+                                                        {% endfor %}                                                            
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="client-comment">
+                                                    <p style="text-align: justify;">{{review.comment}}.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                {% endfor %}
+                        {% else %}
+                           <p>No Review ! &#128549; </p>
+                        {% endif %}
+                    </div>        
+                </div>
+                <div class="col-md-8">
+                    <div class="work-box">
+                        <div class="work-content p-5">
+                           <h1 class="text-left"> {% trans 'course' %} {{course.title_ar}} </h1>
+                           <hr style="width: 150px;">
+                           <p style="text-align: justify;"><strong>{% trans 'description' %} :</strong> <span>{{course.description_ar}}</span></p>
+                            {% if course.requirements_set.all %}
+                                <p style="text-align: justify;"><strong>Requirements :</strong> 
+                                    <ul>
+                                        {% for req in course.requirements_set.all  %}
+                                            <li class="text-mute">{{req}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </p>
+                            {% else %}
+                                <p style="text-align: justify;"><strong>{% trans 'Requirements' %} :</strong>  <span> {% trans 'This Course for beginners' %} </span></p>
+                            {% endif %}
+                            {% if course.discount > 0 %}
+                                {% if course.price > 0 %}
+                                    <p class=""><strong>{% trans 'Old Price' %} : </strong>  <span> <del class="mx-2"> $ {{course.price}} </del></span></p>
+                                    <p class=""><strong>{% trans 'New Price' %} : </strong>  <span> $ {{course.price_after_discount}}</span></p>
+                                {% else %}
+                                    <p class=""><strong>{% trans 'Course Price' %} : </strong>  <span> {% trans 'Free' %} </span></p>
+                                {% endif %}
+                            {% else %}
+                                <p class=""><strong>{% trans 'Course Price' %} : </strong>  <span> $ {{course.price}}</span></p>
+                            {% endif %}
+                            <p style="text-align: justify;"><strong>{% trans 'Created at' %} :</strong> <span>{% trans 'ago' %} {{course.started_at|timesince}} </span></p>
+                            <p style="text-align: justify;"><strong>{% trans 'Created by' %} :</strong> <span>{% trans 'Eng Karim Mohammed Aboelazm' %} </span></p>
+                            
+                            {% if course_had_paid == "done" %}
+                            <div class="card pt-3">
+                                <p class="text-center" style="font-size:20px">{% trans 'You had paid this course' %} 
+                                    <a href="{% url 'porto:student_profile' %}"> {% trans 'check your profile' %} <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                                </p>
+                            </div>
+                            {% else %}
+                            <a href="{% url 'porto:add_to_cart' course.id %}" class="col-md-12 btn btn-lg  mx-auto text-white bg-dark   "><i class="fa fa-cart-plus" aria-hidden="true"></i> {% trans 'Add To Cart' %}</a>
+                            {% endif %}
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endif %}
 {% include 'snippets/reviews_style.html' %}
 {% endblock content %}

@@ -1,22 +1,63 @@
 {% extends 'base.html' %}
 {% load static i18n django_bootstrap5 %}
-{% block title %}{% trans "Karim Aboelazm" %}{% endblock %}
+{% block title %}{% trans "Add To Cart" %}{% endblock %}
 {% block content %}
 {% include "snippets/info2.html" %}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' %}
 <main id="main">
     <section id="work" class="portfolio-mf sect-pt4 route">
         <div class="container">
             <div class="row mb-5" style="margin-top:-150px;">
                 <div class="col-md-8 card mx-auto p-5">
                     <div class="title-box text-center">
-                        <h3 class="""> 
-                            Congratulations <img src="{% static 'img/congratulations.png' %}"  style="width:10%" alt="" srcset=""><br>{{course.title}} Course has been added to your cart.
-                        </h3>
-                        <a href="{% url 'porto:my_cart'%}" class="btn btn-lg bg-dark text-white mt-5"> Check Your Cart <i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                        {% if course_exist %}
+                            <h3 class=""> 
+                               Student {{request.user.first_name|title}} {{request.user.last_name|title}} !!<br>
+                               Course {{course.title}} you had paid this course before.
+                            </h3>
+                            <a href="{% url 'porto:student_profile'%}" class="btn btn-lg bg-dark text-white mt-5"> Check Your Profile <i class="fa fa-user" aria-hidden="true"></i></a>
+                        {% else %}
+                            <h3 class=""> 
+                                Congratulations <img src="{% static 'img/congratulations.png' %}"  style="width:10%" alt="" srcset=""><br>{{course.title}} Course has been added to your cart.
+                            </h3>
+                            <a href="{% url 'porto:my_cart'%}" class="btn btn-lg bg-dark text-white mt-5"> Check Your Cart <i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                        {% endif %}
                     </div>
+                            
                 </div>
             </div>
         </div>
     </section>
 </main>
+
+{% else %}
+<main id="main">
+    <section id="work" class="portfolio-mf sect-pt4 route">
+        <div class="container">
+            <div class="row mb-5" style="margin-top:-150px;">
+                <div class="col-md-8 card mx-auto p-5">
+                    <div class="title-box text-center">
+                        {% if course_exist %}
+                            <h3 class=""> 
+                               الطالب {{request.user.first_name|title}} {{request.user.last_name|title}} !!<br>
+                               لقد قمت بدفع هذا الكورس من قبل 
+                            </h3>
+                            <a href="{% url 'porto:student_profile'%}" class="btn btn-lg bg-dark text-white mt-5"> تحقق من ملفك الشخصي <i class="fa fa-user" aria-hidden="true"></i></a>
+                        {% else %}
+                            <h3 class=""> 
+                                هنيئا <img src="{% static 'img/congratulations.png' %}"  style="width:10%" alt="" srcset=""><br>{% trans 'course' %} {{course.title_ar}}  تم اضافته في الحقيبة.
+                            </h3>
+                            <a href="{% url 'porto:my_cart'%}" class="btn btn-lg bg-dark text-white mt-5"> تحقق من العربة الخاصة بك <i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                        {% endif %}
+                    </div>
+                            
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endif %}
 {% endblock content %}

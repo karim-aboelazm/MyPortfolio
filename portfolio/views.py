@@ -80,25 +80,30 @@ class AllCoursesView(TemplateView):
         context["course_list"] = Courses.objects.all().order_by('-id') 
         return context
 
-class CourseDetailView(PortofolioMixin,FormView):
+class CourseDetailView(PortofolioMixin,TemplateView):
     template_name = 'course_pages/one_course.html'
-    form_class = ReviewForm
-    def get_context_data(self, **kwargs):
+    def get_context_data(self ,**kwargs):
         context = super().get_context_data(**kwargs)
         course = Courses.objects.get(id=self.kwargs['pk'])
-        context['about'] = AboutMe.objects.latest('id')
-        context['jobs'] = Jobs.objects.all().order_by('-id')
         context["course_payment_value"] = course.price_after_discount * 100
-        # context["key"] = settings.STRIPE_PUBLISHABLE_KEY
         context["course"] = course
+        
+        context["order"] = []
+        context["paid_courses"] = []
+        
+        for i in self.request.user.courseorder_set.all():
+            context["order"].append(i)
+        for j in context["order"]:
+            order_course  = CartCourse.objects.get(cart=j.cart).course
+            context["paid_courses"].append(Courses.objects.get(id=order_course.id).title)
+        
+        if course.title in context["paid_courses"]:
+            context["course_had_paid"] = "done"
+        else:
+            context["course_had_paid"] = "not done"
+            
         return context
-    def form_valid(self, form):
-        form.instance.course = Courses.objects.get(id=self.kwargs['pk'])
-        form.instance.save()
-        return super(CourseDetailView,self).form_valid(form)
-    def get_success_url(self):
-       return reverse_lazy('porto:course-details', kwargs={'pk': self.kwargs['pk']})
- 
+    
 # customer registeration
 class StudentRegisterView(CreateView):
     template_name = 'student_pages/signup.html'
@@ -164,9 +169,19 @@ class StudentProfileView(PortofolioMixin,TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["order"] = []
+        context["student_courses"] = []
+        
+        for i in self.request.user.courseorder_set.all():
+            context["order"].append(i)
+        for j in context["order"]:
+            order_course  = CartCourse.objects.get(cart=j.cart).course
+            context["student_courses"].append(Courses.objects.get(id=order_course.id))
+        
         context["profile"] = Students.objects.get(user=self.request.user) 
         context['about'] = AboutMe.objects.latest('id')
         context['jobs'] = Jobs.objects.all().order_by('-id')
+        context["student_courses"] = list(set(context["student_courses"]))[::-1]
         return context
 
 # customer update profile
@@ -256,6 +271,18 @@ class AddToCartView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         course_obj = Courses.objects.get(id=self.kwargs['pk'])
+        context["order"] = []
+        context["student_courses"] = []
+        
+        for i in self.request.user.courseorder_set.all():
+            context["order"].append(i)
+        for j in context["order"]:
+            order_course  = CartCourse.objects.get(cart=j.cart).course
+            context["student_courses"].append(Courses.objects.get(id=order_course.id))
+        if course_obj in context["student_courses"]:
+            context["course_exist"] = True
+        else:
+            context["course_exist"] = False
         context["course"] = course_obj
         cart_id = self.request.session.get('cart_id',None)
         
@@ -315,7 +342,7 @@ class EmptyCartView(PortofolioMixin,View):
         cart_id = request.session.get('cart_id',None)
         if cart_id:
             cart = Cart.objects.get(id=cart_id)
-            cart.cartproduct_set.all().delete()
+            cart.cartcourse_set.all().delete()
             cart.total = 0
             cart.save()
         return redirect('/my-cart/')
@@ -379,9 +406,7 @@ class CheckOutWithRazorPay(PortofolioMixin,View):
             return JsonResponse({
                 "total_price":total_price
                 })
-        
-        
-  
+                
 class PaypalRequestView(PortofolioMixin,View): 
     def get(self, request,*args, **kwargs):
         context={"order" : CourseOrder.objects.get(id = request.GET.get("o_id")),"client_id" : settings.PAYPAL_CLIENT_ID}
@@ -392,25 +417,26 @@ class CreditCardRequestView(PortofolioMixin,View):
         context={"order":CourseOrder.objects.get(id = request.GET.get("o_id"))}
         return render(request,'payment_pages/credit_card_request.html',context)
 
-class OrderHadFinishedView(PortofolioMixin,TemplateView):
+class OrderHadFinishedView(PortofolioMixin,FormView):
     template_name= "order_pages/order_content.html"
+    form_class = ReviewForm
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs) 
+        context["course"] = Courses.objects.get(id=self.kwargs['pk'])
+        return context
+    
+    def get_course(self, **kwargs):
+        course = Courses.objects.get(id=self.kwargs['pk'])
+        return course
+    
+    def form_valid(self, form):
+        form.instance.course = self.get_course()
+        form.instance.save()
+        return super(OrderHadFinishedView,self).form_valid(form)
+    
+    def get_success_url(self):
+           return reverse_lazy('porto:order_had_finished', kwargs={'usr': self.kwargs['usr']})
+    
+    
 
-class ChatbotView(View):
-    def get(self, request):
-        return render(request, 'chatbot.html')
-    
-    
-    
-    def post(self, request):
-        user_message = request.POST.get('message')
-        def generate_response(user_message):
-            if 'hi' in str(user_message).lower().split('%20'):
-                return "Hello, how can I help you?"
-            elif 'bye' in str(user_message).lower():
-                return "Goodbye, have a great day!"
-            else:
-                return "I'm sorry, I didn't understand your message."
-        # Process the user's message and generate a response
-        response = generate_response(user_message)
-        return JsonResponse({"response": response})
-    

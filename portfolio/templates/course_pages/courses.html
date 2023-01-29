@@ -22,7 +22,7 @@
                         <div class="col-md-4">
                             <div class="work-box">
                                 <div class="work-img p-5">
-                                    <img src="{{course.poster.url}}" alt="" class="img-fluid mx-auto" style="width:100%">
+                                    <img src="{{course.poster.url}}" alt="" class="img-fluid mx-auto" style="width:100%;height:250px;">
                                 </div>
                                 </a>
                                 <div class="work-content">
@@ -48,7 +48,7 @@
                                     {% else %}
                                     <h2 class="w-title">{{course.title_ar}}</h2>
                                     <div class="w-more">
-                                        <span class="w-ctegory">تم انشاءه : </span> / <span class="w-date"> منذ  {{course.started_at|timesince}} </span>
+                                        <span class="w-ctegory">تم انشاءها : </span> <span class="w-date"> منذ  {{course.started_at|timesince}} </span>
                                     </div>
                                     <div class="w-more">
                                         {% if course.discount > 0 %}
@@ -64,7 +64,7 @@
                                     {% endif %}
                                     </div>
                                     <div class="col-sm-4">
-                                    <div class="w-like">
+                                    <div class="w-like start-0">
                                         <a href="{% url 'porto:course-details' course.id %}"> <span class="bi bi-plus-circle"></span></a>
                                     </div>
                                     </div>

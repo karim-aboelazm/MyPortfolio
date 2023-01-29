@@ -6,89 +6,23 @@
       <nav id="navbar" class="navbar">
         <ul>
           {% url 'porto:home' as the_url %}
-          {% if request.get_full_path == the_url %}
-          <li><a class="nav-link scrollto" href="/">{% trans "Home"%}</a></li>
-          <li><a class="nav-link scrollto" href="#about">{% trans "About"%}</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'porto:courses' %}">{% trans "Courses"%}</a></li>
-          <li><a class="nav-link scrollto" href="#contact">{% trans "Contact"%}</a></li>
-          <li class="dropdown"><a href=""><span>{% trans "Languages"%}</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li class=""><form  action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                {% get_current_language as LANGUAGE_CODE %}
-                {% get_available_languages as LANGUAGES %}
-                {% get_language_info_list for available_languages as languages %}
-                <input name="next" type="hidden" value="{{ request.get_full_path}}" />
-                <input name="language" type="hidden" value="ar" />
-                <button type="submit" class="ml-5" style="background: none;outline: none;border: none;font-size:20px" class=""><img src="{% static 'img/eg.png' %}" style="width:40px;height:40px;outline: none;margin-right:20px ;"  alt="" srcset=""> {% trans "Arabic" %}</button>
-              </form></li>
-              <hr>
-              <li class=""><form action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                {% get_current_language as LANGUAGE_CODE %}
-                {% get_available_languages as LANGUAGES %}
-                {% get_language_info_list for available_languages as languages %}
-                <input name="next" type="hidden" value="{{ request.get_full_path}}" />
-                <input name="language" type="hidden" value="en" />
-                <button type="submit" class="ml-5" style="background: none;outline: none;border: none;font-size:20px" class=""><img src="{% static 'img/us.png' %}" style="width:30px;height:30px;outline: none;margin-right:20px; margin-left: 5px;"  alt="" srcset=""> {% trans "English" %}</button>
-              </form></li>
-            </ul>
-          </li>
-          {% else %}
-          <li><a class="nav-link scrollto" href="/">{% trans "Home"%}</a></li>
-          <li><a class="nav-link scrollto" href="/#about">{% trans "About"%}</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'porto:courses' %}">{% trans "Courses"%}</a></li>
-          <li><a class="nav-link scrollto" href="/#contact">{% trans "Contact"%}</a></li>
-          <li class="dropdown navbar-nav"><a href=""><span>{% trans "Languages" %}</span> <i class="bi bi-chevron-down"></i></a>
-            <ul class="dropdown-menu">
-              <li class="dropdown-item"><form  action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                {% get_current_language as LANGUAGE_CODE %}
-                {% get_available_languages as LANGUAGES %}
-                {% get_language_info_list for available_languages as languages %}
-                <input name="next" type="hidden" value="{{ request.get_full_path }}" />
-                <input name="language" type="hidden" value="ar" />
-                <button type="submit" class="ml-5" style="background: none;outline: none;border: none;font-size:20px" class=""><img src="{% static 'img/eg.png' %}" style="width:40px;height:40px;outline: none;margin-right:20px ;"  alt="" srcset=""> {% trans "Arabic" %}</button>
-              </form>
-            </li>
-            <li class="dropdown-item"><form action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                {% get_current_language as LANGUAGE_CODE %}
-                {% get_available_languages as LANGUAGES %}
-                {% get_language_info_list for available_languages as languages %}
-                <input name="next" type="hidden" value="{{ request.get_full_path}}" />
-                <input name="language" type="hidden" value="en" />
-                <button type="submit" class="ml-5" style="background: none;outline: none;border: none;font-size:20px" class=""><img src="{% static 'img/us.png' %}" style="width:30px;height:30px;outline: none;margin-right:20px; margin-left: 5px;"  alt="" srcset=""> {% trans "English" %}</button>
-              </form></li>
-            </ul>
-          </li>
-          {% endif %}
-
+            <li><a class="nav-link scrollto" href="/">{% trans "My Portfolio" %}</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'porto:courses' %}">{% trans "Courses"%}</a></li>
           {% if request.user.students %}
             <li class="dropdown navbar-nav" >
               <a class="dropdown-toggle nav-item nav-link" href="#" style="top:0px; background: transparent;" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 {% get_current_language as LANGUAGE_CODE %}
-                {% if LANGUAGE_CODE == 'en' %}
+                {% if LANGUAGE_CODE == 'ar' %}
+                  <span>{{request.user.username}}</span>
                   <i class="fa fa-user mx-1" aria-hidden="true"></i>
-                  <span>
-                      {{request.user.username}}
-                  </span>
-                {% elif LANGUAGE_CODE == 'ar' %}
-                <span>
-                  {{request.user.username}}
-                </span>
-                
-                <i class="fa fa-user mx-1" aria-hidden="true"></i>
-                {% elif LANGUAGE_CODE == 'fr' %}
+                {% else %}
                   <i class="fa fa-user mx-1" aria-hidden="true"></i>
-                  <span>
-                      {{request.user.username}}
-                  </span>
+                  <span>{{request.user.username}}</span>
                 {% endif %}    
               </a>
               {% get_current_language as LANGUAGE_CODE %}
               {% if LANGUAGE_CODE == 'ar' %}
-              <ul class="dropdown-menu" style="position:relative;right:10px;width:120px;" aria-labelledby="dropdownMenuLink">
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <li style="float:right;"><a class="dropdown-item" href="{% url 'porto:student_profile'%}">{% trans "Profile" %}</a></li>
                 <li style="float:right;"><a class="dropdown-item" href="{% url 'porto:student_edit_profile' request.user.students.id%}">{% trans "Settings" %}</a></li>
                 <li style="float:right;"><a class="dropdown-item" href="{% url 'porto:change_password' request.user.students.id%}">{% trans "Change password" %}</a></li>
@@ -102,29 +36,89 @@
                 <li><a class="dropdown-item" href="{% url 'porto:student_logout' %}">{% trans "Logout" %}</a></li>
               </ul>
               {% endif %} 
-  
             </li>
+            <li class="navbar-nav cart">
+              <a class="" href="{% url 'porto:my_cart' %}"><i class="fa fa-cart-plus" style="font-size:20px" aria-hidden="true"></i></a>
+            </li>
+            <style>
+              .cart a:before{
+                display: none;
+                /* width: 80%; */
+                border:none;
+              }
+            </style>
           {% else %}
-            <li><a href="{% url 'porto:student_register'%}"  class="nav-link scrollto" >
-              <i class="fas fa-user-plus mx-1"></i>
-              <span>
-                {% trans "Register" %}
-              </span>
-            </a></li>
-            <li><a href="{% url 'porto:student_login'%}"  class="nav-link scrollto" style="margin-left: 30px;">
-               <i class="fas fa-sign-in-alt mx-1 "></i>
-                <span>
-                    {% trans "Login" %}
-                </span>
-            </a></li>
+            <li>
+              <a href="{% url 'porto:student_register'%}"  class="nav-link scrollto" >
+                <i class="fas fa-user-plus mx-1"></i>
+                <span>{% trans "Register" %}</span>
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'porto:student_login'%}"  class="nav-link scrollto" style="margin-left: 30px;">
+                <i class="fas fa-sign-in-alt mx-1 "></i>
+                <span>{% trans "Login" %}</span>
+              </a>
+            </li>
           {%endif%}
+          {% get_current_language as LANGUAGE_CODE %}
+          {% if LANGUAGE_CODE == 'ar' %}
+          <li class="dropdown navbar-nav cart"><a href=""><i class="fas fa-globe-asia" style="font-size:22px;"></i> <i class="bi bi-chevron-down"></i></a>
+            <ul class="dropdown-menu" >
+              <li class="dropdown-item " style="max-width:60px;">
+                <form  action="{% url 'set_language' %}" method="post">
+                  {% csrf_token %}
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for available_languages as languages %}
+                  <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+                  <input name="language" type="hidden" value="ar" />
+                  <button type="submit" style="background: none;outline: none;border: none;font-size:20px;text-align: right;" class="col-md-12">العربيه<img src="{% static 'img/eg.png' %}" style="width:40px;height:40px;outline: none;"  alt="" srcset=""></button>
+                </form>
+              </li>
+              <li class="dropdown-item " style="max-width:60px;">
+                <form action="{% url 'set_language' %}" method="post">
+                  {% csrf_token %}
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for available_languages as languages %}
+                  <input name="next" type="hidden" value="{{ request.get_full_path}}" />
+                  <input name="language" type="hidden" value="en" />
+                  <button type="submit"  style="background: none;outline: none;border: none;font-size:20px;text-align: right;" class="col-md-12">الأنجليزية<img src="{% static 'img/us.png' %}" style="width:30px;height:30px;outline: none;margin-left: 5px;"  alt="" srcset=""></button>
+                </form>
+              </li>
+            </ul>
+          </li>
+          {% else %}
+          <li class="dropdown navbar-nav cart"><a href=""><i class="fas fa-globe-asia" style="font-size:22px;"></i> <i class="bi bi-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item" style="max-width: 60px;">
+                <form  action="{% url 'set_language' %}" method="post">
+                  {% csrf_token %}
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for available_languages as languages %}
+                  <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+                  <input name="language" type="hidden" value="ar" />
+                  <button type="submit" style="background: none;outline: none;border: none;font-size:20px;" class=""><img src="{% static 'img/eg.png' %}" style="width:40px;height:40px;outline: none;margin-right:20px ;"  alt="" srcset="">AR</button>
+                </form>
+              </li>
+              <li class="dropdown-item" style="max-width: 60px;">
+                <form action="{% url 'set_language' %}" method="post">
+                  {% csrf_token %}
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for available_languages as languages %}
+                  <input name="next" type="hidden" value="{{ request.get_full_path}}" />
+                  <input name="language" type="hidden" value="en" />
+                  <button type="submit" class="col" style="background: none;outline: none;border: none;font-size:20px" class=""><img src="{% static 'img/us.png' %}" style="width:30px;height:30px;outline: none;margin-right:20px; margin-left: 5px;"  alt="" srcset="">EN</button>
+                </form>
+              </li>
+            </ul>
+          </li>
+          {% endif %}
         </ul>
-        
-          
-        
         <i class="bi bi-list mobile-nav-toggle"></i>
-
       </nav><!-- .navbar -->
-
     </div>
 </header><!-- End Header -->

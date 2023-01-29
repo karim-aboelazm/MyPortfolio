@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load static i18n django_bootstrap5 %}
-{% block title %}{% trans "Karim Aboelazm" %}{% endblock %}
+{% block title %}{% trans "Check out" %}{% endblock %}
 {% block content %}
 {% include "snippets/info2.html" %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' %}
 <main id="main">
     <section id="work" class="portfolio-mf sect-pt4 route">
         <div class="container">
@@ -57,7 +59,6 @@
                                     <span class="float-end">$ {{cart.total}}</span>
                                 </h6>
                                 <div class="mt-3">
-                                    <button  type="submit" class="btn btn-success w-100">Order Please</button>
                                     <div id="paypal-button-container" class="paybypaypal mt-3"></div>
                                 </div>
                             {% else %}
@@ -69,6 +70,73 @@
         </div>
     </section>
 </main>
+{% else %}
+<main id="main">
+    <section id="work" class="portfolio-mf sect-pt4 route">
+        <div class="container">
+            <form id="PayForm" method="POST" action="{% url 'porto:check_out' %}">
+                <div class="row" style="margin-top:-150px;">
+                        <div class="col-md-5 card mx-auto p-5 mb-5">
+                        <h3 class="text-center">{% trans 'Checkout Now' %}</h3>
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">{% trans 'First Name' %}</label>
+                                    <input type="text" value="{{request.user.first_name}}" name="first_name" class="form-control" id="exampleFormControlInput1" placeholder="{% trans 'First Name' %}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">{% trans 'Last Name' %}</label>
+                                    <input type="text" value="{{request.user.last_name}}" name="last_name" class="form-control" id="exampleFormControlInput1" placeholder="{% trans 'Last Name' %}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">{% trans 'Email Address' %}</label>
+                                    <input type="email" value="{{request.user.email}}" class="form-control" name="email" id="exampleFormControlInput1" placeholder="{% trans 'Email Address' %}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">{% trans 'Phone Number' %}</label>
+                                    <input type="text" value="{{profile.phone}}" class="form-control" name="phone_num" id="exampleFormControlInput1" placeholder="{% trans 'Phone Number' %}">
+                                </div>  
+                        </div>
+                        <div class="col-md-6 card mx-auto p-5 mb-5">
+                            <h6>{% trans 'Order Summary' %}</h6>
+                            <hr>
+
+                            {% if cart.cartcourse_set.all %}
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">{% trans 'SN' %}</th>
+                                            <th class="text-center">{% trans 'Name' %}</th>
+                                            <th class="text-center">{% trans 'Price' %}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for cp in cart.cartcourse_set.all  %}
+                                        <tr>
+                                            <td class="text-center">{{forloop.counter}}</td>
+                                            <td class="text-center"><img src="{{cp.course.poster.url}}" class="mx-3" style="width:30px;height:30px; " alt="" srcset="">
+                                                {{cp.course.title_ar}}</td>
+                                            <td class="text-center">$ {{cp.rate}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <h6 class="fw-bold">
+                                    <span class="float-start">$ {{cart.total}}</span>
+                                    {% trans 'Grand Total' %}
+                                </h6>
+                                <div class="mt-3">
+                                    <div id="paypal-button-container" class="paybypaypal mt-3"></div>
+                                </div>
+                            {% else %}
+                                <h4>{% trans 'Your cart is empty' %}</h4>
+                            {% endif %}
+                        </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+{% endif %}
 {% block scripts %}
 <script src="https://www.paypal.com/sdk/js?client-id={{client_id}}&currency=USD&disable-funding=credit"></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
@@ -133,9 +201,9 @@
                     url:"/check-out/",
                     data:data,
                     success : function (responsec){
-                        swal("Congratulations!","Your order has been paid successfully !","success").then((value)=>{
+                        swal("Congratulations!","Your order has been paid successfully !\nCheck your Profile","success").then((value)=>{
                             document.getElementById("PayForm").submit();
-                            window.location.href = '/order-had-finished/';
+                            window.location.href = '/student-profile/';
                         });
                     }
 
